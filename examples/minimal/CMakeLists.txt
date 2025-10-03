@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.26)
 project(kappa_core_minimal_example LANGUAGES CXX)
 
-# Add the Kappa library (adjust path as needed)
-add_subdirectory(../.. Kappa)
+# Only add kappa-core if building standalone
+if(NOT TARGET Kappa)
+    add_subdirectory(../.. kappa-core-lib)
+endif()
 
 # Create example executable
 add_executable(MinimalExample main.cpp)
