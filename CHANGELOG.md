@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- OpenGL context creation now falls back from 4.5 to 4.2 for WSL/WSLg compatibility
+- Added runtime detection and graceful fallback for different OpenGL version support
+- Improved logging to show actual OpenGL version obtained
+
 ## [0.2.0] - 2025-10-03
 
 ### Added
