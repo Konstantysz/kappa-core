@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Event bus for publish-subscribe communication between layers.
@@ -61,4 +61,4 @@ namespace Core
         using EventCallback = std::function<void(const Event &)>;
         std::unordered_map<std::type_index, std::vector<EventCallback>> subscribers;
     };
-} // namespace Core
+} // namespace Kappa

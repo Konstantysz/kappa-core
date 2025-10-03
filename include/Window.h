@@ -7,7 +7,7 @@
 // clang-format on
 #include <glm/glm.hpp>
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Configuration for creating a window.
@@ -75,4 +75,4 @@ namespace Core
         WindowSpecification specification; ///< Window configuration
         GLFWwindow *handle;                ///< GLFW window handle
     };
-} // namespace Core
+} // namespace Kappa

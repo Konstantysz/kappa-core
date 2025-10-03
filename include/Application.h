@@ -7,7 +7,7 @@
 #include "Layer.h"
 #include "Window.h"
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Configuration for creating an application.
@@ -105,4 +105,4 @@ namespace Core
         bool isRunning = false;                         ///< Flag indicating if the application is running
         EventBus eventBus;                              ///< Event bus for inter-layer communication
     };
-} // namespace Core
+} // namespace Kappa

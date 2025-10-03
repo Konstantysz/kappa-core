@@ -1,6 +1,6 @@
 #include "Texture.h"
 
-namespace Core
+namespace Kappa
 {
     Texture::Texture(GLuint textureId) : textureId_(textureId)
     {
@@ -59,4 +59,4 @@ namespace Core
         }
     }
 
-} // namespace Core
+} // namespace Kappa

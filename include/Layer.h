@@ -2,7 +2,7 @@
 
 #include "Event.h"
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Base class for application layers.
@@ -33,4 +33,4 @@ namespace Core
         {
         }
     };
-} // namespace Core
+} // namespace Kappa

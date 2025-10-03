@@ -7,7 +7,7 @@
 
 #include "Logger.h"
 
-namespace Core
+namespace Kappa
 {
     static Application *instance = nullptr;
 
@@ -104,4 +104,4 @@ namespace Core
     {
         return eventBus;
     }
-} // namespace Core
+} // namespace Kappa

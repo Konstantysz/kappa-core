@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <string>
 
-using namespace Core;
+using namespace Kappa;
 
 // Custom event examples
 struct PlayerMovedEvent : public Event

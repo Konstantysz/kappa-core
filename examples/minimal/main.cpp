@@ -7,7 +7,7 @@
 /**
  * @brief Minimal example layer demonstrating basic rendering.
  */
-class ExampleLayer : public Core::Layer
+class ExampleLayer : public Kappa::Layer
 {
 public:
     void OnUpdate(float deltaTime) override
@@ -37,7 +37,7 @@ private:
 int main()
 {
     // Configure application
-    Core::ApplicationSpecification spec;
+    Kappa::ApplicationSpecification spec;
     spec.name = "kappa-core Minimal Example";
     spec.width = 1280;
     spec.height = 720;
@@ -45,7 +45,7 @@ int main()
     LOG_INFO("Starting {} ({}x{})", spec.name, spec.width, spec.height);
 
     // Create application
-    Core::Application app(spec);
+    Kappa::Application app(spec);
 
     // Add our example layer
     app.PushLayer(std::make_shared<ExampleLayer>());

@@ -190,7 +190,7 @@ Frame End
 ```
 GLFW Event (keyboard, mouse, etc.)
     ↓
-Window translates to Core::Event
+Window translates to Kappa::Event
     ↓
 EventBus::Publish(event)
     ↓
@@ -206,7 +206,7 @@ Event consumed or propagated
 ### Creating Custom Layers
 
 ```cpp
-class MyLayer : public Core::Layer
+class MyLayer : public Kappa::Layer
 {
     void OnAttach() override {
         // Initialize resources
@@ -220,7 +220,7 @@ class MyLayer : public Core::Layer
         // Rendering code
     }
 
-    void OnEvent(const Core::Event& event) override {
+    void OnEvent(const Kappa::Event& event) override {
         // Handle events
     }
 };
@@ -229,7 +229,7 @@ class MyLayer : public Core::Layer
 ### Custom Events
 
 ```cpp
-struct MyCustomEvent : public Core::Event
+struct MyCustomEvent : public Kappa::Event
 {
     int data;
     std::string message;

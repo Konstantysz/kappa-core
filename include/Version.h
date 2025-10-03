@@ -6,7 +6,7 @@
 
 #define KAPPA_CORE_VERSION_STRING "0.1.0"
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Version information for kappa-core.
@@ -18,4 +18,4 @@ namespace Core
         static constexpr int Patch = KAPPA_CORE_VERSION_PATCH;
         static constexpr const char* String = KAPPA_CORE_VERSION_STRING;
     };
-} // namespace Core
+} // namespace Kappa

@@ -36,7 +36,7 @@ cmake --build build
 
 **Code Highlights:**
 ```cpp
-class ExampleLayer : public Core::Layer
+class ExampleLayer : public Kappa::Layer
 {
     void OnRender() override
     {
@@ -138,7 +138,7 @@ EventBus::Publish(PlayerMovedEvent(x, y));
 #include "Core/Layer.h"
 #include "Core/Logger.h"
 
-class MyLayer : public Core::Layer
+class MyLayer : public Kappa::Layer
 {
     void OnAttach() override
     {
@@ -155,7 +155,7 @@ class MyLayer : public Core::Layer
         // Rendering code
     }
 
-    void OnEvent(const Core::Event& event) override
+    void OnEvent(const Kappa::Event& event) override
     {
         // Handle events
     }
@@ -163,14 +163,14 @@ class MyLayer : public Core::Layer
 
 int main()
 {
-    Core::Logger::Init();
+    Kappa::Logger::Init();
 
-    Core::ApplicationSpecification spec;
+    Kappa::ApplicationSpecification spec;
     spec.name = "My Application";
     spec.width = 1280;
     spec.height = 720;
 
-    Core::Application app(spec);
+    Kappa::Application app(spec);
     app.PushLayer(std::make_shared<MyLayer>());
     app.Run();
 
@@ -206,7 +206,7 @@ Event handling: UI → Game → Background (top to bottom)
 
 ```cpp
 // Define event
-struct MyEvent : public Core::Event { int data; };
+struct MyEvent : public Kappa::Event { int data; };
 
 // Subscribe (in OnAttach)
 EventBus::Subscribe<MyEvent>([this](const MyEvent& e) {

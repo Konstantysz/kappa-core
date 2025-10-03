@@ -65,7 +65,7 @@ target_link_libraries(YourApp PRIVATE Core)
 #include "Application.h"
 #include "Layer.h"
 
-class MyLayer : public Core::Layer
+class MyLayer : public Kappa::Layer
 {
 public:
     void OnUpdate(float deltaTime) override
@@ -81,12 +81,12 @@ public:
 
 int main()
 {
-    Core::ApplicationSpecification spec;
+    Kappa::ApplicationSpecification spec;
     spec.name = "My Application";
     spec.width = 1280;
     spec.height = 720;
 
-    Core::Application app(spec);
+    Kappa::Application app(spec);
     app.PushLayer(std::make_shared<MyLayer>());
     app.Run();
 
@@ -115,7 +115,7 @@ LOG_DEBUG("Debug info at {}:{}", __FILE__, __LINE__);
 #include "Event.h"
 
 // Define custom event
-struct MyEvent : public Core::Event
+struct MyEvent : public Kappa::Event
 {
     int data;
 };
@@ -136,7 +136,7 @@ eventBus.Publish(MyEvent{42});
 #include "Texture.h"
 
 // Load texture from file (requires image loading library)
-Core::Texture texture;
+Kappa::Texture texture;
 // ... load image data ...
 texture.Create(width, height, imageData);
 

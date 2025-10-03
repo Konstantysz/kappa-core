@@ -4,7 +4,7 @@
 #include "Core/Logger.h"
 #include <GLFW/glfw3.h>
 
-using namespace Core;
+using namespace Kappa;
 
 // Example: Background layer that renders a colored background
 class BackgroundLayer : public Layer
