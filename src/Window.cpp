@@ -4,7 +4,7 @@
 
 namespace Kappa
 {
-    Window::Window(const WindowSpecification &spec) : specification(spec)
+    Window::Window(const WindowSpecification &spec) : specification(spec), handle(nullptr)
     {
     }
 

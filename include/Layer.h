@@ -11,6 +11,11 @@ namespace Kappa
     {
     public:
         /**
+         * @brief Virtual destructor for proper cleanup of derived classes.
+         */
+        virtual ~Layer() = default;
+
+        /**
          * @brief Called when an event occurs.
          * @param event Event to handle
          */

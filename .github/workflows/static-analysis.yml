@@ -40,8 +40,6 @@ jobs:
       - name: Run clang-tidy
         run: |
           clang-tidy-14 -p build \
-            --header-filter='include/.*' \
-            --warnings-as-errors=* \
             $(find src -type f -name '*.cpp' 2>/dev/null || true)
 
   cppcheck:

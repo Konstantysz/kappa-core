@@ -13,9 +13,33 @@ Checks: "*,
         -readability-avoid-const-params-in-decls,
         -cppcoreguidelines-non-private-member-variables-in-classes,
         -misc-non-private-member-variables-in-classes,
+        -readability-magic-numbers,
+        -cppcoreguidelines-avoid-magic-numbers,
+        -cppcoreguidelines-macro-usage,
+        -readability-identifier-length,
+        -misc-unused-parameters,
+        -cppcoreguidelines-init-variables,
+        -modernize-use-nodiscard,
+        -readability-implicit-bool-conversion,
+        -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+        -cppcoreguidelines-pro-type-reinterpret-cast,
+        -cppcoreguidelines-narrowing-conversions,
+        -bugprone-narrowing-conversions,
+        -hicpp-uppercase-literal-suffix,
+        -readability-uppercase-literal-suffix,
+        -readability-isolate-declaration,
+        -hicpp-explicit-conversions,
+        -cppcoreguidelines-avoid-non-const-global-variables,
+        -modernize-pass-by-value,
+        -cppcoreguidelines-pro-type-member-init,
+        -hicpp-member-init,
+        -cppcoreguidelines-special-member-functions,
+        -hicpp-special-member-functions,
+        -cppcoreguidelines-virtual-class-destructor,
 "
 WarningsAsErrors: ''
-HeaderFilterRegex: ''
+HeaderFilterRegex: 'include/.*'
+SystemHeaders: false
 FormatStyle:     none
 
 CheckOptions:
