@@ -35,11 +35,7 @@ jobs:
           ./bootstrap-vcpkg.sh
 
       - name: Configure CMake
-        run: |
-          cmake -B build \
-            -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake \
-            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-            -DCMAKE_BUILD_TYPE=Debug
+        run: cmake -B build -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
 
       - name: Run clang-tidy
         run: |
