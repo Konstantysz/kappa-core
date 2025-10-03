@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-10-03
+
 ### Added
 - Version management system with Version.h header and CMake project versioning
 - vcpkg.json for package manager dependency management
@@ -28,24 +30,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Organized project structure with src/ and include/ directories
 
 ### Changed
-- Renamed namespace from `Core` to `Kappa` throughout the codebase
-- Renamed CMake library target from `Core` to `Kappa`
+- **BREAKING**: Renamed namespace from `Core` to `Kappa` throughout the codebase
+- **BREAKING**: Renamed CMake library target from `Core` to `Kappa`
 - Reorganized source code into standard src/ and include/ directory structure
 - Updated all examples to use new namespace and library name
-
-### Deprecated
-- N/A
-
-### Removed
-- N/A
 
 ### Fixed
 - Added virtual destructor to `Layer` class to prevent memory leaks in derived classes
 - Initialized `Window::handle` member to nullptr to prevent undefined behavior
 - Configured clang-tidy as non-blocking due to GCC 14 standard library incompatibility with clang-tidy-14
-
-### Security
-- N/A
 
 ## [0.1.0] - 2025-10-03
 
@@ -55,5 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CMake build system
 - Example application demonstrating framework usage
 
-[Unreleased]: https://github.com/Konstantysz/kappa-core/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Konstantysz/kappa-core/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Konstantysz/kappa-core/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Konstantysz/kappa-core/releases/tag/v0.1.0
