@@ -1,7 +1,7 @@
-#include "Core/Application.h"
-#include "Core/EventBus.h"
-#include "Core/Layer.h"
-#include "Core/Logger.h"
+#include "Application.h"
+#include "EventBus.h"
+#include "Layer.h"
+#include "Logger.h"
 #include <GLFW/glfw3.h>
 
 using namespace Kappa;
