@@ -1,0 +1,36 @@
+name: Format Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  clang-format:
+    name: Check code formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format-14
+
+      - name: Run clang-format
+        run: |
+          find . -type f \( -name '*.cpp' -o -name '*.h' \) \
+            ! -path "*/build/*" \
+            ! -path "*/examples/*/build/*" \
+            -exec clang-format-14 --dry-run --Werror {} +
+
+      - name: Format check failed
+        if: failure()
+        run: |
+          echo "Code formatting check failed!"
+          echo "Please run clang-format on your changes:"
+          echo "  find . -type f \( -name '*.cpp' -o -name '*.h' \) -exec clang-format -i {} +"
+          exit 1
