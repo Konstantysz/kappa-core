@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.26)
-project(core LANGUAGES CXX)
+project(kappa-core
+    VERSION 0.1.0
+    DESCRIPTION "Lightweight C++20 application framework with layer-based architecture"
+    LANGUAGES CXX)
 
 find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
@@ -22,3 +25,9 @@ target_link_libraries(Core PUBLIC
     spdlog::spdlog)
 
 target_compile_features(Core PUBLIC cxx_std_20)
+
+# Build examples (optional, can be disabled with -DBUILD_EXAMPLES=OFF)
+option(BUILD_EXAMPLES "Build example applications" ON)
+if(BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
