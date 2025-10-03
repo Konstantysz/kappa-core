@@ -10,12 +10,12 @@ find_package(glm CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
 add_library(Core STATIC
-    Application.cpp
-    Window.cpp
-    Texture.cpp)
+    src/Application.cpp
+    src/Window.cpp
+    src/Texture.cpp)
 
 target_include_directories(Core PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
 
 target_link_libraries(Core PUBLIC
