@@ -40,7 +40,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - N/A
 
 ### Fixed
-- N/A
+- Added virtual destructor to `Layer` class to prevent memory leaks in derived classes
+- Initialized `Window::handle` member to nullptr to prevent undefined behavior
+- Configured clang-tidy as non-blocking due to GCC 14 standard library incompatibility with clang-tidy-14
 
 ### Security
 - N/A
