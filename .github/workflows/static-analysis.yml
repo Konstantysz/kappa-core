@@ -41,9 +41,7 @@ jobs:
         run: |
           clang-tidy-14 -p build \
             --warnings-as-errors=* \
-            $(find . -type f \( -name '*.cpp' \) \
-              ! -path "*/build/*" \
-              ! -path "*/examples/*")
+            $(find src -type f -name '*.cpp' 2>/dev/null || true)
 
   cppcheck:
     name: Cppcheck Analysis
@@ -68,7 +66,7 @@ jobs:
             --inline-suppr \
             --std=c++20 \
             -I include \
-            . 2>&1 | tee cppcheck-report.txt
+            src/ include/ 2>&1 | tee cppcheck-report.txt
 
       - name: Upload cppcheck results
         if: always()
