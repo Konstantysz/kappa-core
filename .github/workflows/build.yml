@@ -60,4 +60,4 @@ jobs:
         run: cmake --build build --config Release
 
       - name: Build examples
-        run: cmake --build build --config Release --target minimal_example
+        run: cmake --build build --config Release --target MinimalExample
