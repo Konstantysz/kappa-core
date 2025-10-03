@@ -11,14 +11,18 @@ using namespace Kappa;
 struct PlayerMovedEvent : public Event
 {
     float x, y;
-    PlayerMovedEvent(float x, float y) : x(x), y(y) {}
+    PlayerMovedEvent(float x, float y) : x(x), y(y)
+    {
+    }
 };
 
 struct ScoreChangedEvent : public Event
 {
     int newScore;
     int delta;
-    ScoreChangedEvent(int score, int delta) : newScore(score), delta(delta) {}
+    ScoreChangedEvent(int score, int delta) : newScore(score), delta(delta)
+    {
+    }
 };
 
 struct GameStateEvent : public Event
@@ -30,7 +34,9 @@ struct GameStateEvent : public Event
         GameOver
     };
     State state;
-    GameStateEvent(State s) : state(s) {}
+    GameStateEvent(State s) : state(s)
+    {
+    }
 };
 
 // Example layer demonstrating EventBus usage
@@ -49,9 +55,8 @@ public:
         LOG_INFO("EventDemoLayer attached");
 
         // Subscribe to custom events
-        EventBus::Subscribe<PlayerMovedEvent>([this](const PlayerMovedEvent &e) {
-            LOG_DEBUG("Player moved to ({:.2f}, {:.2f})", e.x, e.y);
-        });
+        EventBus::Subscribe<PlayerMovedEvent>(
+            [this](const PlayerMovedEvent &e) { LOG_DEBUG("Player moved to ({:.2f}, {:.2f})", e.x, e.y); });
 
         EventBus::Subscribe<ScoreChangedEvent>([this](const ScoreChangedEvent &e) {
             if (e.delta > 0)

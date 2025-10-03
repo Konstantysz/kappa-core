@@ -16,6 +16,6 @@ namespace Kappa
         static constexpr int Major = KAPPA_CORE_VERSION_MAJOR;
         static constexpr int Minor = KAPPA_CORE_VERSION_MINOR;
         static constexpr int Patch = KAPPA_CORE_VERSION_PATCH;
-        static constexpr const char* String = KAPPA_CORE_VERSION_STRING;
+        static constexpr const char *String = KAPPA_CORE_VERSION_STRING;
     };
 } // namespace Kappa

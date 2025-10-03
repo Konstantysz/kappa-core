@@ -10,7 +10,10 @@ using namespace Kappa;
 class BackgroundLayer : public Layer
 {
 public:
-    void OnAttach() override { LOG_INFO("BackgroundLayer attached"); }
+    void OnAttach() override
+    {
+        LOG_INFO("BackgroundLayer attached");
+    }
 
     void OnUpdate(float deltaTime) override
     {
@@ -33,7 +36,10 @@ private:
     float colorPhase = 0.0f;
 
 public:
-    void OnAttach() override { LOG_INFO("GameLayer attached"); }
+    void OnAttach() override
+    {
+        LOG_INFO("GameLayer attached");
+    }
 
     void OnUpdate(float deltaTime) override
     {
@@ -86,7 +92,10 @@ private:
     float fpsTimer = 0.0f;
 
 public:
-    void OnAttach() override { LOG_INFO("UILayer attached"); }
+    void OnAttach() override
+    {
+        LOG_INFO("UILayer attached");
+    }
 
     void OnUpdate(float deltaTime) override
     {
