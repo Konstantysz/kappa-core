@@ -39,7 +39,6 @@ private:
 
 int main()
 {
-    Kappa::Logger::Init();
     MinimalApp app;
     app.Run();
     return 0;
