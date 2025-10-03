@@ -8,34 +8,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial release of kappa-core
-- Core application framework with layer-based architecture
-- Event system with EventBus for decoupled communication
-- Window management with GLFW integration
-- OpenGL context management and basic rendering support
-- Input handling system
-- Logger with multiple severity levels
-- Texture loading and management
-- Time delta calculation for frame-independent updates
-- Layer stack for organizing application logic
-- Comprehensive README with examples
-- MIT License
-- Minimal example application demonstrating basic usage
+- Version management system with Version.h header and CMake project versioning
+- vcpkg.json for package manager dependency management
+- GitHub Actions CI/CD workflows:
+  - Multi-platform builds (Windows, Ubuntu, macOS)
+  - Automated testing
+  - clang-format code style checks
+  - Static analysis with clang-tidy and cppcheck
+  - Doxygen API documentation generation with GitHub Pages deployment
+- Comprehensive documentation:
+  - ARCHITECTURE.md with design patterns, diagrams, and data flow explanations
+  - EXAMPLES.md with detailed usage guides and tutorials
+- Additional example applications:
+  - Layers example demonstrating multi-layer architecture
+  - Events example showcasing EventBus with custom events
+- Code quality configuration files:
+  - .clang-format for consistent code formatting
+  - .clang-tidy for static analysis rules
+- Organized project structure with src/ and include/ directories
 
 ### Changed
-- N/A (initial release)
+- Renamed namespace from `Core` to `Kappa` throughout the codebase
+- Renamed CMake library target from `Core` to `Kappa`
+- Reorganized source code into standard src/ and include/ directory structure
+- Updated all examples to use new namespace and library name
 
 ### Deprecated
-- N/A (initial release)
+- N/A
 
 ### Removed
-- N/A (initial release)
+- N/A
 
 ### Fixed
-- N/A (initial release)
+- N/A
 
 ### Security
-- N/A (initial release)
+- N/A
 
 ## [0.1.0] - 2025-10-03
 
