@@ -2,9 +2,9 @@
 
 #include "Logger.h"
 
-namespace Core
+namespace Kappa
 {
-    Window::Window(const WindowSpecification &spec) : specification(spec)
+    Window::Window(const WindowSpecification &spec) : specification(spec), handle(nullptr)
     {
     }
 
@@ -66,4 +66,4 @@ namespace Core
     {
         return handle;
     }
-} // namespace Core
+} // namespace Kappa

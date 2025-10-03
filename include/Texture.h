@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief RAII-managed OpenGL texture.
@@ -101,4 +101,4 @@ namespace Core
         void Cleanup();
     };
 
-} // namespace Core
+} // namespace Kappa

@@ -8,7 +8,7 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Type-safe logging wrapper around spdlog.
@@ -166,40 +166,40 @@ namespace Core
         std::shared_ptr<spdlog::logger> logger_;
     };
 
-} // namespace Core
+} // namespace Kappa
 
 /**
  * @brief Trace logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_TRACE(...) ::Core::Logger::Get().Trace(__VA_ARGS__)
+#define LOG_TRACE(...) ::Kappa::Logger::Get().Trace(__VA_ARGS__)
 
 /**
  * @brief Debug logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_DEBUG(...) ::Core::Logger::Get().Debug(__VA_ARGS__)
+#define LOG_DEBUG(...) ::Kappa::Logger::Get().Debug(__VA_ARGS__)
 
 /**
  * @brief Info logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_INFO(...) ::Core::Logger::Get().Info(__VA_ARGS__)
+#define LOG_INFO(...) ::Kappa::Logger::Get().Info(__VA_ARGS__)
 
 /**
  * @brief Warning logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_WARN(...) ::Core::Logger::Get().Warn(__VA_ARGS__)
+#define LOG_WARN(...) ::Kappa::Logger::Get().Warn(__VA_ARGS__)
 
 /**
  * @brief Error logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_ERROR(...) ::Core::Logger::Get().Error(__VA_ARGS__)
+#define LOG_ERROR(...) ::Kappa::Logger::Get().Error(__VA_ARGS__)
 
 /**
  * @brief Critical logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_CRITICAL(...) ::Core::Logger::Get().Critical(__VA_ARGS__)
+#define LOG_CRITICAL(...) ::Kappa::Logger::Get().Critical(__VA_ARGS__)

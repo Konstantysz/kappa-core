@@ -2,7 +2,7 @@
 
 #include "Event.h"
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Base class for application layers.
@@ -10,6 +10,11 @@ namespace Core
     class Layer
     {
     public:
+        /**
+         * @brief Virtual destructor for proper cleanup of derived classes.
+         */
+        virtual ~Layer() = default;
+
         /**
          * @brief Called when an event occurs.
          * @param event Event to handle
@@ -33,4 +38,4 @@ namespace Core
         {
         }
     };
-} // namespace Core
+} // namespace Kappa

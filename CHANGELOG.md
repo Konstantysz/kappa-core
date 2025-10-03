@@ -1,0 +1,53 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.2.0] - 2025-10-03
+
+### Added
+- Version management system with Version.h header and CMake project versioning
+- vcpkg.json for package manager dependency management
+- GitHub Actions CI/CD workflows:
+  - Multi-platform builds (Windows, Ubuntu, macOS)
+  - Automated testing
+  - clang-format code style checks
+  - Static analysis with clang-tidy and cppcheck
+  - Doxygen API documentation generation with GitHub Pages deployment
+- Comprehensive documentation:
+  - ARCHITECTURE.md with design patterns, diagrams, and data flow explanations
+  - EXAMPLES.md with detailed usage guides and tutorials
+- Additional example applications:
+  - Layers example demonstrating multi-layer architecture
+  - Events example showcasing EventBus with custom events
+- Code quality configuration files:
+  - .clang-format for consistent code formatting
+  - .clang-tidy for static analysis rules
+- Organized project structure with src/ and include/ directories
+
+### Changed
+- **BREAKING**: Renamed namespace from `Core` to `Kappa` throughout the codebase
+- **BREAKING**: Renamed CMake library target from `Core` to `Kappa`
+- Reorganized source code into standard src/ and include/ directory structure
+- Updated all examples to use new namespace and library name
+
+### Fixed
+- Added virtual destructor to `Layer` class to prevent memory leaks in derived classes
+- Initialized `Window::handle` member to nullptr to prevent undefined behavior
+- Configured clang-tidy as non-blocking due to GCC 14 standard library incompatibility with clang-tidy-14
+
+## [0.1.0] - 2025-10-03
+
+### Added
+- Initial project structure
+- Core framework components
+- CMake build system
+- Example application demonstrating framework usage
+
+[Unreleased]: https://github.com/Konstantysz/kappa-core/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Konstantysz/kappa-core/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/Konstantysz/kappa-core/releases/tag/v0.1.0

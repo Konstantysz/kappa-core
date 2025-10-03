@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Core
+namespace Kappa
 {
     /**
      * @brief Base class for all events in the application.
@@ -10,4 +10,4 @@ namespace Core
     public:
         virtual ~Event() = default;
     };
-} // namespace Core
+} // namespace Kappa

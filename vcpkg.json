@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "kappa-core",
+  "version-string": "0.2.0",
+  "description": "Lightweight C++20 application framework with layer-based architecture for building desktop applications",
+  "homepage": "https://github.com/Konstantysz/kappa-core",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "glad",
+      "features": ["gl-api-43"]
+    },
+    "glfw3",
+    "glm",
+    "spdlog",
+    "stb"
+  ],
+  "builtin-baseline": "a62ce77d56ee07513b4b67de1ec2daeaebfae51a"
+}
