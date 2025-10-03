@@ -39,7 +39,6 @@ Checks: "*,
 "
 WarningsAsErrors: ''
 HeaderFilterRegex: 'include/.*'
-SystemHeaders: false
 FormatStyle:     none
 
 CheckOptions:
