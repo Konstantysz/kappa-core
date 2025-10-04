@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 project(kappa-core
-    VERSION 0.2.0
+    VERSION 0.2.1
     DESCRIPTION "Lightweight C++20 application framework with layer-based architecture"
     LANGUAGES CXX)
 
