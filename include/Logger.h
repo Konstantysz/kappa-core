@@ -29,12 +29,12 @@ namespace Kappa
         /**
          * @brief Trace logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Trace(const std::string &format, Args &&...args)
+        template<typename... Args> void Trace(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->trace(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -42,12 +42,12 @@ namespace Kappa
         /**
          * @brief Debug logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Debug(const std::string &format, Args &&...args)
+        template<typename... Args> void Debug(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->debug(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -55,12 +55,12 @@ namespace Kappa
         /**
          * @brief Info logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Info(const std::string &format, Args &&...args)
+        template<typename... Args> void Info(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->info(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -68,12 +68,12 @@ namespace Kappa
         /**
          * @brief Warning logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Warn(const std::string &format, Args &&...args)
+        template<typename... Args> void Warn(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->warn(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -81,12 +81,12 @@ namespace Kappa
         /**
          * @brief Error logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Error(const std::string &format, Args &&...args)
+        template<typename... Args> void Error(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->error(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -94,12 +94,12 @@ namespace Kappa
         /**
          * @brief Critical logging.
          * @tparam Args Format argument types
+         * @param loc Source location
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Critical(const std::string &format, Args &&...args)
+        template<typename... Args> void Critical(const std::source_location &loc, const std::string &format, Args &&...args)
         {
-            const auto loc = std::source_location::current();
             logger_->critical(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
         }
@@ -172,34 +172,34 @@ namespace Kappa
  * @brief Trace logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_TRACE(...) ::Kappa::Logger::Get().Trace(__VA_ARGS__)
+#define LOG_TRACE(...) ::Kappa::Logger::Get().Trace(std::source_location::current(), __VA_ARGS__)
 
 /**
  * @brief Debug logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_DEBUG(...) ::Kappa::Logger::Get().Debug(__VA_ARGS__)
+#define LOG_DEBUG(...) ::Kappa::Logger::Get().Debug(std::source_location::current(), __VA_ARGS__)
 
 /**
  * @brief Info logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_INFO(...) ::Kappa::Logger::Get().Info(__VA_ARGS__)
+#define LOG_INFO(...) ::Kappa::Logger::Get().Info(std::source_location::current(), __VA_ARGS__)
 
 /**
  * @brief Warning logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_WARN(...) ::Kappa::Logger::Get().Warn(__VA_ARGS__)
+#define LOG_WARN(...) ::Kappa::Logger::Get().Warn(std::source_location::current(), __VA_ARGS__)
 
 /**
  * @brief Error logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_ERROR(...) ::Kappa::Logger::Get().Error(__VA_ARGS__)
+#define LOG_ERROR(...) ::Kappa::Logger::Get().Error(std::source_location::current(), __VA_ARGS__)
 
 /**
  * @brief Critical logging macro.
  * @param ... Format string and arguments
  */
-#define LOG_CRITICAL(...) ::Kappa::Logger::Get().Critical(__VA_ARGS__)
+#define LOG_CRITICAL(...) ::Kappa::Logger::Get().Critical(std::source_location::current(), __VA_ARGS__)
