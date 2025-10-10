@@ -33,7 +33,8 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Trace(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args>
+        void Trace(const std::source_location &loc, const std::string &format, Args &&...args)
         {
             logger_->trace(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
@@ -46,7 +47,8 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Debug(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args>
+        void Debug(const std::source_location &loc, const std::string &format, Args &&...args)
         {
             logger_->debug(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
@@ -85,7 +87,8 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Error(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args>
+        void Error(const std::source_location &loc, const std::string &format, Args &&...args)
         {
             logger_->error(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
@@ -98,7 +101,8 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Critical(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args>
+        void Critical(const std::source_location &loc, const std::string &format, Args &&...args)
         {
             logger_->critical(
                 "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));

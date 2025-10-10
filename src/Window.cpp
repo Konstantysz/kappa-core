@@ -32,21 +32,27 @@ namespace Kappa
         if (!handle)
         {
             LOG_WARN("Failed to create OpenGL {}.{} context, trying {}.{}",
-                     preferredMajor, preferredMinor, preferredMajor, fallbackMinor);
+                preferredMajor,
+                preferredMinor,
+                preferredMajor,
+                fallbackMinor);
 
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, preferredMajor);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, fallbackMinor);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
             glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
-            handle = glfwCreateWindow(specification.width, specification.height,
-                                     specification.title.c_str(), nullptr, nullptr);
+            handle = glfwCreateWindow(
+                specification.width, specification.height, specification.title.c_str(), nullptr, nullptr);
         }
 
         if (!handle)
         {
             LOG_ERROR("Failed to create GLFW window with OpenGL {}.{} or {}.{}",
-                     preferredMajor, preferredMinor, preferredMajor, fallbackMinor);
+                preferredMajor,
+                preferredMinor,
+                preferredMajor,
+                fallbackMinor);
             assert(false);
         }
 
@@ -54,7 +60,7 @@ namespace Kappa
         gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
 
         // Log the actual OpenGL version we got
-        const char* version = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+        const char *version = reinterpret_cast<const char *>(glGetString(GL_VERSION));
         LOG_INFO("OpenGL context created: {}", version ? version : "unknown");
 
         glfwSwapInterval(specification.vSync ? 1 : 0);
@@ -139,8 +145,12 @@ namespace Kappa
             Restore();
         }
 
-        LOG_INFO("Window state applied: {}x{} at ({},{}), maximized: {}", state.width, state.height, state.posX,
-                 state.posY, state.isMaximized);
+        LOG_INFO("Window state applied: {}x{} at ({},{}), maximized: {}",
+            state.width,
+            state.height,
+            state.posX,
+            state.posY,
+            state.isMaximized);
     }
 
     void Window::GetPosition(int &outX, int &outY) const
