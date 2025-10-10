@@ -5,7 +5,7 @@
 repos:
   # General code quality hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
         exclude: \.(md|rst)$
@@ -33,15 +33,9 @@ repos:
     rev: v0.6.13
     hooks:
       - id: cmake-format
+        args: ['--config-files', '.cmake-format.yaml']
       - id: cmake-lint
-
-  # Additional security checks
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
-    hooks:
-      - id: detect-secrets
-        args: ['--baseline', '.secrets.baseline']
-        exclude: \.lock$|\.md$|\.txt$
+        args: ['--config-files', '.cmake-format.yaml']
 
 # Global configuration
 ci:

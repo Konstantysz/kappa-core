@@ -10,9 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Window state persistence with `WindowState` struct (position, size, maximized status)
-- `nlohmann-json` dependency for serialization
-- Pre-commit hooks configuration with code formatting, linting, and security checks
-- GitHub Actions workflow for automated pre-commit checks
+- Window control methods: `GetState()`, `SetState()`, `GetPosition()`, `SetPosition()`, `GetSize()`, `SetSize()`
+- Window maximization methods: `IsMaximized()`, `Maximize()`, `Restore()`, `Center()`
+- `WindowStatePersistence` utility class for JSON-based window state persistence with `Load()`, `Save()`, `LoadAndApply()`, and `CaptureAndSave()` methods
+- `nlohmann-json` dependency for JSON serialization
+- Pre-commit hooks configuration with:
+  - General code quality checks (trailing whitespace, EOF, YAML/JSON validation, large files, case conflicts, merge conflicts)
+  - C++ code formatting via clang-format
+  - CMake formatting and linting via cmake-format
+- GitHub Actions workflow for automated pre-commit checks on CI
+- GitHub workflow status badges in README (build, tests, format, pre-commit, static analysis, documentation)
 
 ## [0.2.2] - 2025-10-07
 
