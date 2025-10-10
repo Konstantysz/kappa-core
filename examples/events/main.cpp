@@ -12,13 +12,17 @@ using namespace Kappa;
 struct PlayerMovedEvent : public Event
 {
     float x, y;
-    PlayerMovedEvent(float x, float y) : x(x), y(y) {}
+    PlayerMovedEvent(float x, float y) : x(x), y(y)
+    {
+    }
 };
 
 struct ScoreChangedEvent : public Event
 {
     int newScore;
-    ScoreChangedEvent(int score) : newScore(score) {}
+    ScoreChangedEvent(int score) : newScore(score)
+    {
+    }
 };
 
 class EventDemoLayer : public Layer

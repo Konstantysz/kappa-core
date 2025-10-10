@@ -10,6 +10,18 @@
 namespace Kappa
 {
     /**
+     * @brief Window state information for persistence.
+     */
+    struct WindowState
+    {
+        int posX = -1;            ///< Window X position (-1 means use default/centered)
+        int posY = -1;            ///< Window Y position (-1 means use default/centered)
+        int width = 1280;         ///< Window width in pixels
+        int height = 720;         ///< Window height in pixels
+        bool isMaximized = false; ///< Whether window is maximized
+    };
+
+    /**
      * @brief Configuration for creating a window.
      */
     struct WindowSpecification
@@ -70,6 +82,68 @@ namespace Kappa
          * @return GLFW window handle
          */
         [[nodiscard]] GLFWwindow *GetHandle() const;
+
+        /**
+         * @brief Captures current window state.
+         * @return Current window state (position, size, maximized status)
+         */
+        [[nodiscard]] WindowState GetState() const;
+
+        /**
+         * @brief Applies window state.
+         * @param state State to apply
+         * @note Should be called after Create() to properly position and size the window
+         */
+        void SetState(const WindowState &state);
+
+        /**
+         * @brief Gets window position.
+         * @param outX Output X position
+         * @param outY Output Y position
+         */
+        void GetPosition(int &outX, int &outY) const;
+
+        /**
+         * @brief Sets window position.
+         * @param x X position
+         * @param y Y position
+         */
+        void SetPosition(int x, int y);
+
+        /**
+         * @brief Gets window size.
+         * @param outWidth Output width
+         * @param outHeight Output height
+         */
+        void GetSize(int &outWidth, int &outHeight) const;
+
+        /**
+         * @brief Sets window size.
+         * @param width Width in pixels
+         * @param height Height in pixels
+         */
+        void SetSize(int width, int height);
+
+        /**
+         * @brief Checks if window is maximized.
+         * @return True if maximized
+         */
+        [[nodiscard]] bool IsMaximized() const;
+
+        /**
+         * @brief Maximizes the window.
+         */
+        void Maximize();
+
+        /**
+         * @brief Restores the window from maximized state.
+         */
+        void Restore();
+
+        /**
+         * @brief Centers window on primary monitor.
+         */
+        void Center();
 
     private:
         WindowSpecification specification; ///< Window configuration
