@@ -66,6 +66,18 @@ namespace Kappa
         [[nodiscard]] glm::vec2 GetFramebufferSize() const;
 
         /**
+         * @brief Returns the main application window.
+         * @return Reference to the window
+         */
+        [[nodiscard]] Window &GetWindow();
+
+        /**
+         * @brief Returns the main application window.
+         * @return Const reference to the window
+         */
+        [[nodiscard]] const Window &GetWindow() const;
+
+        /**
          * @brief Called at the beginning of each frame.
          */
         virtual void BeginFrame()

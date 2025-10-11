@@ -89,6 +89,18 @@ namespace Kappa
         return window->GetFrameBufferSize();
     }
 
+    Window &Application::GetWindow()
+    {
+        assert(window);
+        return *window;
+    }
+
+    const Window &Application::GetWindow() const
+    {
+        assert(window);
+        return *window;
+    }
+
     Application &Application::Get()
     {
         assert(instance);
