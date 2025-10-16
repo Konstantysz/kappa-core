@@ -48,7 +48,7 @@ namespace Kappa
 
     protected:
         /**
-         * @brief Adds a layer to the layer stack.
+         * @brief Adds a layer to the layer stack (default constructible version).
          * @tparam TLayer Layer type (must derive from Layer)
          */
         template<typename TLayer>
@@ -57,6 +57,19 @@ namespace Kappa
         {
             static_assert(std::is_default_constructible_v<TLayer>, "Layer must be default constructible");
             layerStack.push_back(std::make_unique<TLayer>());
+        }
+
+        /**
+         * @brief Adds a layer to the layer stack with constructor arguments.
+         * @tparam TLayer Layer type (must derive from Layer)
+         * @tparam Args Constructor argument types
+         * @param args Arguments to forward to the layer constructor
+         */
+        template<typename TLayer, typename... Args>
+            requires std::is_base_of_v<Layer, TLayer>
+        void PushLayer(Args&&... args)
+        {
+            layerStack.push_back(std::make_unique<TLayer>(std::forward<Args>(args)...));
         }
 
         /**

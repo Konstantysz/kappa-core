@@ -4,6 +4,46 @@ project(kappa-core
     DESCRIPTION "Lightweight C++20 application framework with layer-based architecture"
     LANGUAGES CXX)
 
+# ========================================
+# Build Options
+# ========================================
+option(BUILD_EXAMPLES "Build example applications" ON)
+option(BUILD_TESTS "Build test executables" ON)
+option(ENABLE_COVERAGE "Enable code coverage analysis" OFF)
+
+# ========================================
+# LLVM Coverage Integration
+# ========================================
+if(ENABLE_COVERAGE)
+    find_program(LLVM_PROFDATA_EXE
+        NAMES "llvm-profdata"
+        PATHS "C:/Program Files/LLVM/bin"
+    )
+    find_program(LLVM_COV_EXE
+        NAMES "llvm-cov"
+        PATHS "C:/Program Files/LLVM/bin"
+    )
+
+    if(LLVM_PROFDATA_EXE AND LLVM_COV_EXE)
+        message(STATUS "LLVM coverage tools found:")
+        message(STATUS "  llvm-profdata: ${LLVM_PROFDATA_EXE}")
+        message(STATUS "  llvm-cov: ${LLVM_COV_EXE}")
+
+        set(LLVM_PROFDATA_EXE ${LLVM_PROFDATA_EXE} CACHE INTERNAL "")
+        set(LLVM_COV_EXE ${LLVM_COV_EXE} CACHE INTERNAL "")
+
+        add_compile_options(-fprofile-instr-generate -fcoverage-mapping)
+        add_link_options(-fprofile-instr-generate -fcoverage-mapping)
+
+        message(STATUS "Code coverage enabled for kappa-core")
+    else()
+        message(FATAL_ERROR "LLVM coverage tools not found! Please ensure llvm-profdata and llvm-cov are in your PATH.")
+    endif()
+endif()
+
+# Include code quality functions
+include(cmake/CodeQuality.cmake)
+
 find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
@@ -29,8 +69,25 @@ target_link_libraries(Kappa PUBLIC
 
 target_compile_features(Kappa PUBLIC cxx_std_20)
 
-# Build examples (optional, can be disabled with -DBUILD_EXAMPLES=OFF)
-option(BUILD_EXAMPLES "Build example applications" ON)
+# Setup code quality targets and IDE integration
+kappa_add_code_quality_targets()
+kappa_setup_ide_integration()
+
+# Ensure consistent iterator debug level in Debug builds (MSVC)
+if(MSVC)
+    target_compile_definitions(Kappa PUBLIC
+        $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=2>
+        $<$<CONFIG:Release>:_ITERATOR_DEBUG_LEVEL=0>
+    )
+endif()
+
+# Build examples
 if(BUILD_EXAMPLES)
     add_subdirectory(examples)
+endif()
+
+# Build tests
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
 endif()
