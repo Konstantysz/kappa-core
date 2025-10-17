@@ -112,7 +112,21 @@ protected:
         {
             GTEST_SKIP() << "GLFW initialization failed - skipping test (headless environment)";
         }
-        glfwTerminate(); // Clean up after check
+
+        // Try to create a minimal hidden window to test OpenGL availability
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        GLFWwindow *testWindow = glfwCreateWindow(1, 1, "test", nullptr, nullptr);
+
+        if (!testWindow)
+        {
+            glfwTerminate();
+            GTEST_SKIP() << "OpenGL context creation failed - skipping test (no GPU/driver)";
+        }
+
+        glfwDestroyWindow(testWindow);
+        glfwTerminate();
     }
 
     ApplicationSpecification spec;
