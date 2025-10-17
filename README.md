@@ -169,10 +169,12 @@ Application::Run()
 ### Layer System
 
 Layers are processed in the order they're added:
+
 1. **Update Phase** - Each layer's `OnUpdate()` is called
 2. **Render Phase** - Each layer's `OnRender()` is called
 
 Layers can be used for:
+
 - UI rendering (ImGui, etc.)
 - Game world rendering
 - Debug overlays
@@ -181,6 +183,7 @@ Layers can be used for:
 ## Examples
 
 See the `examples/` directory for complete sample applications:
+
 - `minimal` - Bare minimum application
 - `logging` - Logging system demonstration
 - `layers` - Multi-layer rendering
@@ -195,24 +198,94 @@ cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=[vcpkg root]/scripts/buildsystems/vcp
 # Build
 cmake --build build
 
-# Run tests (if available)
+# Run tests
 ctest --test-dir build
 ```
+
+## Testing
+
+Kappa-core includes comprehensive unit tests using Google Test framework.
+
+### Running Tests
+
+```bash
+# Using CMake presets
+cmake --preset Debug-vcpkg
+cmake --build --preset Debug-vcpkg
+ctest --preset Debug-vcpkg
+
+# Or manually
+cd build
+ctest --output-on-failure
+```
+
+### Test Coverage
+
+Code coverage analysis is available using LLVM tools (requires `llvm-profdata` and `llvm-cov`).
+
+```bash
+# Enable coverage in CMake
+cmake --preset Debug-coverage -DENABLE_COVERAGE=ON
+
+# Run coverage analysis (automated)
+python scripts/run-coverage.py
+
+# Or manually using CMake targets
+cmake --build build --target kappa-coverage-html
+cmake --build build --target kappa-coverage-open  # Opens HTML report
+```
+
+**Current Coverage**: ~39% (73/81 tests passing)
+
+- Function Coverage: 39.29% (22/56)
+- Line Coverage: 38.92% (151/388)
+- Branch Coverage: 35.37% (29/82)
+
+### Test Suite
+
+- **TestSimple.cpp** - Basic sanity tests (4 tests)
+- **TestEventBus.cpp** - Event system tests (15 tests)
+- **TestLayer.cpp** - Layer lifecycle tests (15 tests)
+- **TestWindow.cpp** - Window specification tests (12 tests)
+- **TestWindowStatePersistence.cpp** - JSON persistence tests (15 tests)
+- **TestApplication.cpp** - Application framework tests (20 tests, 8 disabled due to MSVC allocator issues)
+
+**Total**: 81 tests (73 passing, 8 disabled)
 
 ## Project Structure
 
 ```
 kappa-core/
-├── Application.h/cpp    # Main application framework
-├── Window.h/cpp         # GLFW window wrapper
-├── Layer.h              # Layer base class
-├── EventBus.h           # Event system
-├── Logger.h             # Logging system
-├── Texture.h/cpp        # OpenGL texture wrapper
-├── Event.h              # Event base class
-├── CMakeLists.txt       # Build configuration
-├── README.md            # This file
-└── examples/            # Example applications
+├── include/                 # Public headers
+│   ├── Application.h        # Main application framework
+│   ├── Window.h             # GLFW window wrapper
+│   ├── Layer.h              # Layer base class
+│   ├── EventBus.h           # Event system
+│   ├── Logger.h             # Logging system
+│   ├── Texture.h            # OpenGL texture wrapper
+│   └── Event.h              # Event base class
+├── src/                     # Implementation files
+│   ├── Application.cpp
+│   ├── Window.cpp
+│   ├── WindowStatePersistence.cpp
+│   └── Texture.cpp
+├── tests/                   # Unit tests (Google Test)
+│   ├── TestSimple.cpp
+│   ├── TestEventBus.cpp
+│   ├── TestLayer.cpp
+│   ├── TestWindow.cpp
+│   ├── TestWindowStatePersistence.cpp
+│   ├── TestApplication.cpp
+│   └── README.md
+├── cmake/                   # CMake modules
+│   └── CodeQuality.cmake    # Coverage & quality targets
+├── scripts/                 # Utility scripts
+│   └── run-coverage.py      # Automated coverage analysis
+├── examples/                # Example applications
+├── CMakeLists.txt           # Build configuration
+├── vcpkg.json               # Dependency manifest
+├── README.md                # This file
+└── TESTING.md               # Testing documentation
 ```
 
 ## Design Philosophy
@@ -227,6 +300,7 @@ kappa-core/
 ## Contributing
 
 Contributions are welcome! Please:
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -239,6 +313,7 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 Built with:
+
 - [GLFW](https://www.glfw.org/) - Window and input
 - [glad](https://glad.dav1d.de/) - OpenGL loader
 - [glm](https://github.com/g-truc/glm) - Mathematics
@@ -247,6 +322,7 @@ Built with:
 ## Version History
 
 ### v1.0.0 (Initial Release)
+
 - Application framework with layer system
 - Window management with GLFW
 - Logging system with spdlog
