@@ -67,7 +67,7 @@ namespace Kappa
          */
         template<typename TLayer, typename... Args>
             requires std::is_base_of_v<Layer, TLayer>
-        void PushLayer(Args&&... args)
+        void PushLayer(Args &&...args)
         {
             layerStack.push_back(std::make_unique<TLayer>(std::forward<Args>(args)...));
         }

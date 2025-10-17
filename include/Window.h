@@ -26,7 +26,7 @@ namespace Kappa
      */
     struct WindowSpecification
     {
-        std::string title;    ///< Window title displayed in the title bar
+        std::string title;         ///< Window title displayed in the title bar
         unsigned int width = 1280; ///< Window width in pixels
         unsigned int height = 720; ///< Window height in pixels
         bool isResizable = true;   ///< Whether the window can be resized by the user
