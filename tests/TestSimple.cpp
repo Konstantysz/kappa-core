@@ -40,7 +40,7 @@ TEST(SimpleTest, ClassWithString)
 
 TEST(SimpleTest, ClassWithStringOnHeap)
 {
-    auto* obj = new SimpleClass("HeapTest");
+    auto *obj = new SimpleClass("HeapTest");
     EXPECT_EQ(obj->GetName(), "HeapTest");
     delete obj;
 }

@@ -1,5 +1,5 @@
-#include "Layer.h"
 #include "Event.h"
+#include "Layer.h"
 
 #include <gtest/gtest.h>
 
@@ -39,8 +39,7 @@ public:
 class ParameterizedLayer : public Layer
 {
 public:
-    explicit ParameterizedLayer(std::string name, int priority)
-        : layerName(std::move(name)), layerPriority(priority)
+    explicit ParameterizedLayer(std::string name, int priority) : layerName(std::move(name)), layerPriority(priority)
     {
     }
 

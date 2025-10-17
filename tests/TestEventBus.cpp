@@ -1,5 +1,5 @@
-#include "EventBus.h"
 #include "Event.h"
+#include "EventBus.h"
 
 #include <gtest/gtest.h>
 #include <string>
@@ -150,9 +150,8 @@ TEST_F(EventBusTest, LambdaCaptureByValue)
     int capturedValue = 100;
     int receivedValue = 0;
 
-    eventBus.Subscribe<TestEvent>([capturedValue, &receivedValue](const TestEvent &event) {
-        receivedValue = event.value + capturedValue;
-    });
+    eventBus.Subscribe<TestEvent>(
+        [capturedValue, &receivedValue](const TestEvent &event) { receivedValue = event.value + capturedValue; });
 
     TestEvent event(50);
     eventBus.Publish(event);

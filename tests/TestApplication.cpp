@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Layer.h"
 
+#include <GLFW/glfw3.h>
 #include <gtest/gtest.h>
 #include <memory>
 
@@ -33,8 +34,7 @@ public:
 class ParameterizedLayer : public Layer
 {
 public:
-    explicit ParameterizedLayer(int value, std::string name)
-        : intValue(value), stringValue(std::move(name))
+    explicit ParameterizedLayer(int value, std::string name) : intValue(value), stringValue(std::move(name))
     {
     }
 
@@ -55,8 +55,7 @@ public:
 class MultiParamLayer : public Layer
 {
 public:
-    MultiParamLayer(int a, float b, std::string c, bool d)
-        : intVal(a), floatVal(b), stringVal(std::move(c)), boolVal(d)
+    MultiParamLayer(int a, float b, std::string c, bool d) : intVal(a), floatVal(b), stringVal(std::move(c)), boolVal(d)
     {
     }
 
@@ -83,14 +82,12 @@ public:
 class TestApplication : public Application
 {
 public:
-    explicit TestApplication(const ApplicationSpecification &spec = ApplicationSpecification())
-        : Application(spec)
+    explicit TestApplication(const ApplicationSpecification &spec = ApplicationSpecification()) : Application(spec)
     {
     }
 
     // Expose protected PushLayer for testing
-    template<typename TLayer, typename... Args>
-    void TestPushLayer(Args &&...args)
+    template<typename TLayer, typename... Args> void TestPushLayer(Args &&...args)
     {
         PushLayer<TLayer>(std::forward<Args>(args)...);
     }
@@ -109,6 +106,13 @@ protected:
         spec.windowSpecification.title = "Test Window";
         spec.windowSpecification.width = 800;
         spec.windowSpecification.height = 600;
+
+        // Check if we can initialize GLFW (skip tests in headless CI)
+        if (!glfwInit())
+        {
+            GTEST_SKIP() << "GLFW initialization failed - skipping test (headless environment)";
+        }
+        glfwTerminate(); // Clean up after check
     }
 
     ApplicationSpecification spec;
