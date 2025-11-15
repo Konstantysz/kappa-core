@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2025-11-15
+
+### Added
+
+- CI/CD vcpkg binary caching with `lukka/run-vcpkg@v11` for 5-10x faster builds
+- Automated coverage workflow with HTML reports and PR comments
+- Coverage statistics extraction and display in pull requests
+- `Application::GetLayers()` returning `std::span<const std::unique_ptr<Layer>>` for read-only layer access
+
+### Changed
+
+- `BUILD_EXAMPLES` and `BUILD_TESTS` now default to OFF when used as submodule (standard CMake pattern)
+- `Window::GetPosition()` now returns `Position{x, y}` instead of using out-parameters
+- `Window::GetSize()` now returns `Size{width, height}` instead of using out-parameters
+- `Window::GetState()` now uses C++20 designated initializers for clarity
+- OpenGL version constants and timestep limits are now `constexpr`
+- Magic numbers replaced with named `constexpr` constants with explanatory comments
+
+### Fixed
+
+- Python Unicode encoding in coverage script (Windows CI compatibility)
+- Coverage workflow build directory paths
+- Test executable name in coverage extraction
+
 ## [0.4.0] - 2025-10-18
 
 ### Added
