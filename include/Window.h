@@ -10,6 +10,24 @@
 namespace Kappa
 {
     /**
+     * @brief Window position in screen coordinates.
+     */
+    struct Position
+    {
+        int x; ///< X coordinate
+        int y; ///< Y coordinate
+    };
+
+    /**
+     * @brief Window or framebuffer size.
+     */
+    struct Size
+    {
+        int width;  ///< Width in pixels
+        int height; ///< Height in pixels
+    };
+
+    /**
      * @brief Window state information for persistence.
      */
     struct WindowState
@@ -98,10 +116,9 @@ namespace Kappa
 
         /**
          * @brief Gets window position.
-         * @param outX Output X position
-         * @param outY Output Y position
+         * @return Window position in screen coordinates
          */
-        void GetPosition(int &outX, int &outY) const;
+        [[nodiscard]] Position GetPosition() const;
 
         /**
          * @brief Sets window position.
@@ -112,10 +129,9 @@ namespace Kappa
 
         /**
          * @brief Gets window size.
-         * @param outWidth Output width
-         * @param outHeight Output height
+         * @return Window size in pixels
          */
-        void GetSize(int &outWidth, int &outHeight) const;
+        [[nodiscard]] Size GetSize() const;
 
         /**
          * @brief Sets window size.

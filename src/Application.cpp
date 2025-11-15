@@ -45,6 +45,10 @@ namespace Kappa
     {
         isRunning = true;
 
+        // Timestep clamping: prevent simulation instability from long frames
+        constexpr float minTimestep = 0.001f; // 1ms minimum (1000 FPS cap)
+        constexpr float maxTimestep = 0.1f;   // 100ms maximum (handle long frames/debugging)
+
         auto lastTime = GetTime();
 
         while (isRunning)
@@ -58,7 +62,7 @@ namespace Kappa
             }
 
             const auto currentTime = GetTime();
-            const auto timestep = glm::clamp(currentTime - lastTime, 0.001f, 0.1f);
+            const auto timestep = glm::clamp(currentTime - lastTime, minTimestep, maxTimestep);
             lastTime = currentTime;
 
             for (auto &layer : layerStack)
@@ -99,6 +103,11 @@ namespace Kappa
     {
         assert(window);
         return *window;
+    }
+
+    std::span<const std::unique_ptr<Layer>> Application::GetLayers() const
+    {
+        return layerStack;
     }
 
     Application &Application::Get()
