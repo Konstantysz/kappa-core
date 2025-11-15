@@ -45,7 +45,7 @@ jobs:
       # RelWithDebInfo provides debug symbols while maintaining performance
       - name: Configure CMake (with coverage)
         run: |
-          cmake -B build \
+          cmake -B build/Debug-coverage \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
@@ -55,7 +55,7 @@ jobs:
         shell: bash
 
       - name: Build with Coverage
-        run: cmake --build build --parallel
+        run: cmake --build build/Debug-coverage --parallel
 
       - name: Generate Coverage Report
         run: python scripts/run-coverage.py --no-build
@@ -69,16 +69,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report-windows
-          path: build/coverage/html/
+          path: build/Debug-coverage/coverage/html/
           retention-days: 30
 
       - name: Extract Coverage Statistics
         if: always()
         id: coverage-stats
         run: |
-          if [ -f build/coverage/coverage.profdata ]; then
-            TEST_EXE="build/tests/TestKappa.exe"
-            PROFDATA="build/coverage/coverage.profdata"
+          if [ -f build/Debug-coverage/coverage/coverage.profdata ]; then
+            TEST_EXE="build/Debug-coverage/tests/TestKappa.exe"
+            PROFDATA="build/Debug-coverage/coverage/coverage.profdata"
 
             llvm-cov report "$TEST_EXE" -instr-profile="$PROFDATA" > coverage-summary.txt
             TOTAL_LINE=$(tail -n 1 coverage-summary.txt)
@@ -101,7 +101,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const coverageExists = fs.existsSync('build/coverage/html');
+            const coverageExists = fs.existsSync('build/Debug-coverage/coverage/html');
 
             let body = '## 📊 Test Coverage Report\n\n';
 
