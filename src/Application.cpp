@@ -46,8 +46,8 @@ namespace Kappa
         isRunning = true;
 
         // Timestep clamping: prevent simulation instability from long frames
-        constexpr float minTimestep = 0.001f;  // 1ms minimum (1000 FPS cap)
-        constexpr float maxTimestep = 0.1f;    // 100ms maximum (handle long frames/debugging)
+        constexpr float minTimestep = 0.001f; // 1ms minimum (1000 FPS cap)
+        constexpr float maxTimestep = 0.1f;   // 100ms maximum (handle long frames/debugging)
 
         auto lastTime = GetTime();
 

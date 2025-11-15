@@ -104,7 +104,7 @@ namespace Kappa
         if (!handle)
         {
             LOG_WARN("Window::GetState() called on invalid window handle");
-            return WindowState{};  // Return default-constructed state
+            return WindowState{}; // Return default-constructed state
         }
 
         int x, y, w, h;
@@ -113,13 +113,7 @@ namespace Kappa
         const bool maximized = glfwGetWindowAttrib(handle, GLFW_MAXIMIZED) != 0;
 
         // C++20 designated initializers for clarity
-        return WindowState{
-            .posX = x,
-            .posY = y,
-            .width = w,
-            .height = h,
-            .isMaximized = maximized
-        };
+        return WindowState{ .posX = x, .posY = y, .width = w, .height = h, .isMaximized = maximized };
     }
 
     void Window::SetState(const WindowState &state)
@@ -160,7 +154,7 @@ namespace Kappa
 
     Position Window::GetPosition() const
     {
-        Position pos{0, 0};
+        Position pos{ 0, 0 };
         if (handle)
         {
             glfwGetWindowPos(handle, &pos.x, &pos.y);
@@ -178,7 +172,7 @@ namespace Kappa
 
     Size Window::GetSize() const
     {
-        Size size{0, 0};
+        Size size{ 0, 0 };
         if (handle)
         {
             glfwGetWindowSize(handle, &size.width, &size.height);
