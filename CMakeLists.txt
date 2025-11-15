@@ -7,8 +7,15 @@ project(kappa-core
 # ========================================
 # Build Options
 # ========================================
-option(BUILD_EXAMPLES "Build example applications" ON)
-option(BUILD_TESTS "Build test executables" ON)
+# Only build examples and tests by default when this is the main project
+# When used as a submodule, these should be OFF by default to avoid cluttering parent builds
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    option(BUILD_EXAMPLES "Build example applications" ON)
+    option(BUILD_TESTS "Build test executables" ON)
+else()
+    option(BUILD_EXAMPLES "Build example applications" OFF)
+    option(BUILD_TESTS "Build test executables" OFF)
+endif()
 option(ENABLE_COVERAGE "Enable code coverage analysis" OFF)
 
 # ========================================
