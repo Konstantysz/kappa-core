@@ -77,7 +77,7 @@ jobs:
         id: coverage-stats
         run: |
           if [ -f build/Debug-coverage/coverage/coverage.profdata ]; then
-            TEST_EXE="build/Debug-coverage/tests/TestKappa.exe"
+            TEST_EXE="build/Debug-coverage/tests/TestKappaCore.exe"
             PROFDATA="build/Debug-coverage/coverage/coverage.profdata"
 
             llvm-cov report "$TEST_EXE" -instr-profile="$PROFDATA" > coverage-summary.txt
