@@ -16,9 +16,9 @@ namespace Kappa
     void Window::Create()
     {
         // Try OpenGL 4.5 first (Windows native), fall back to 4.2 (WSL/WSLg max)
-        const int preferredMajor = 4;
-        const int preferredMinor = 5;
-        const int fallbackMinor = 2;
+        constexpr int preferredMajor = 4;
+        constexpr int preferredMinor = 5;
+        constexpr int fallbackMinor = 2;
 
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, preferredMajor);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, preferredMinor);
@@ -101,20 +101,25 @@ namespace Kappa
 
     WindowState Window::GetState() const
     {
-        WindowState state;
-
         if (!handle)
         {
             LOG_WARN("Window::GetState() called on invalid window handle");
-            return state;
+            return WindowState{};  // Return default-constructed state
         }
 
-        state.isMaximized = glfwGetWindowAttrib(handle, GLFW_MAXIMIZED) != 0;
+        int x, y, w, h;
+        glfwGetWindowPos(handle, &x, &y);
+        glfwGetWindowSize(handle, &w, &h);
+        const bool maximized = glfwGetWindowAttrib(handle, GLFW_MAXIMIZED) != 0;
 
-        glfwGetWindowPos(handle, &state.posX, &state.posY);
-        glfwGetWindowSize(handle, &state.width, &state.height);
-
-        return state;
+        // C++20 designated initializers for clarity
+        return WindowState{
+            .posX = x,
+            .posY = y,
+            .width = w,
+            .height = h,
+            .isMaximized = maximized
+        };
     }
 
     void Window::SetState(const WindowState &state)
@@ -153,12 +158,14 @@ namespace Kappa
             state.isMaximized);
     }
 
-    void Window::GetPosition(int &outX, int &outY) const
+    Position Window::GetPosition() const
     {
+        Position pos{0, 0};
         if (handle)
         {
-            glfwGetWindowPos(handle, &outX, &outY);
+            glfwGetWindowPos(handle, &pos.x, &pos.y);
         }
+        return pos;
     }
 
     void Window::SetPosition(int x, int y)
@@ -169,12 +176,14 @@ namespace Kappa
         }
     }
 
-    void Window::GetSize(int &outWidth, int &outHeight) const
+    Size Window::GetSize() const
     {
+        Size size{0, 0};
         if (handle)
         {
-            glfwGetWindowSize(handle, &outWidth, &outHeight);
+            glfwGetWindowSize(handle, &size.width, &size.height);
         }
+        return size;
     }
 
     void Window::SetSize(int width, int height)

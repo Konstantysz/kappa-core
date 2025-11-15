@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <span>
 #include <string>
 #include <vector>
 
@@ -122,6 +123,13 @@ namespace Kappa
          * @return Event bus
          */
         [[nodiscard]] EventBus &GetEventBus();
+
+        /**
+         * @brief Returns a read-only view of the layer stack.
+         * @return Span of layers (non-owning view)
+         * @note Allows external iteration without exposing the internal vector
+         */
+        [[nodiscard]] std::span<const std::unique_ptr<Layer>> GetLayers() const;
 
     private:
         ApplicationSpecification specification;         ///< Application configuration
