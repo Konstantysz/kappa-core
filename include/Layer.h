@@ -19,7 +19,7 @@ namespace Kappa
          * @brief Called when an event occurs.
          * @param event Event to handle
          */
-        virtual void OnEvent(Event &event)
+        virtual void OnEvent([[maybe_unused]] Event &event)
         {
         }
 
@@ -27,7 +27,7 @@ namespace Kappa
          * @brief Called every frame to update the layer.
          * @param deltaTime Time elapsed since last update
          */
-        virtual void OnUpdate(float deltaTime)
+        virtual void OnUpdate([[maybe_unused]] float deltaTime)
         {
         }
 

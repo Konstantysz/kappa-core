@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2025-11-22
+
+### Fixed
+
+- Compilation warnings for unused parameters in `Layer` class
+- `nodiscard` warning in `TestApplication` tests
+- Enabled stricter warning flags (`/W4` for MSVC, `-Wall -Wextra -Wpedantic -Werror` for others) in CMake build system
+
 ## [0.5.0] - 2025-11-15
 
 ### Added
