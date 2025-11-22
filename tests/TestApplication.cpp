@@ -233,7 +233,7 @@ TEST_F(ApplicationTest, ApplicationHasEventBus)
 {
     TestApplication app(spec);
 
-    EXPECT_NO_THROW(app.GetEventBus());
+    EXPECT_NO_THROW((void)app.GetEventBus());
 }
 
 // ============================================================================

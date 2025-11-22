@@ -76,6 +76,12 @@ target_link_libraries(Kappa PUBLIC
 
 target_compile_features(Kappa PUBLIC cxx_std_20)
 
+if(MSVC)
+    target_compile_options(Kappa PRIVATE /W4)
+else()
+    target_compile_options(Kappa PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
+
 # Setup code quality targets and IDE integration
 kappa_add_code_quality_targets()
 kappa_setup_ide_integration()
