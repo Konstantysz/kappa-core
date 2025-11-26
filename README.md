@@ -2,8 +2,6 @@
 
 [![Build Status](https://github.com/Konstantysz/kappa-core/actions/workflows/build.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/build.yml)
 [![Tests](https://github.com/Konstantysz/kappa-core/actions/workflows/tests.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/tests.yml)
-[![Format Check](https://github.com/Konstantysz/kappa-core/actions/workflows/format.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/format.yml)
-[![Pre-commit](https://github.com/Konstantysz/kappa-core/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/pre-commit.yml)
 [![Static Analysis](https://github.com/Konstantysz/kappa-core/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/static-analysis.yml)
 [![Documentation](https://github.com/Konstantysz/kappa-core/actions/workflows/docs.yml/badge.svg)](https://github.com/Konstantysz/kappa-core/actions/workflows/docs.yml)
 
