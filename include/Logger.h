@@ -22,10 +22,31 @@ namespace Kappa
          */
         static Logger &Get()
         {
-            static Logger instance(spdlog::stdout_color_mt("VisionCraft"));
+            static Logger instance(spdlog::stdout_color_mt(GetLoggerName()));
             return instance;
         }
 
+        /**
+         * @brief Sets the logger name (must be called before first Get()).
+         * @param name Logger name to display in logs
+         */
+        static void SetLoggerName(const std::string &name)
+        {
+            GetLoggerName() = name;
+        }
+
+    private:
+        /**
+         * @brief Returns the logger name (default: "Kappa").
+         * @return Logger name
+         */
+        static std::string &GetLoggerName()
+        {
+            static std::string loggerName = "Kappa";
+            return loggerName;
+        }
+
+    public:
         /**
          * @brief Trace logging.
          * @tparam Args Format argument types

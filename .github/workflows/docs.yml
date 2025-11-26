@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write                # needed for the push to gh‑pages
+
 jobs:
   doxygen:
     name: Generate API Documentation
@@ -28,5 +31,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/api/html
+          publish_dir: ./docs
           publish_branch: gh-pages
