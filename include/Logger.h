@@ -47,7 +47,6 @@ namespace Kappa
         }
 
     public:
-
         /**
          * @brief Trace logging.
          * @tparam Args Format argument types
