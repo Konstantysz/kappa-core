@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "Kappa/Texture.h"
 
 namespace Kappa
 {

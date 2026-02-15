@@ -1,5 +1,5 @@
-#include "WindowStatePersistence.h"
-#include "Logger.h"
+#include "Kappa/WindowStatePersistence.h"
+#include "Kappa/Logger.h"
 
 #include <fstream>
 #include <nlohmann/json.hpp>
