@@ -1,5 +1,5 @@
-<map id="EventBus.h" name="EventBus.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="256,5,351,31"/>
+<map id="Kappa/EventBus.h" name="Kappa/EventBus.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,5,373,31"/>
 <area shape="rect" id="Node000002" href="$Event_8h.html" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,33,90,80,89,74,260,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="100,79,187,104"/>
@@ -11,5 +11,5 @@
 <area shape="rect" id="Node000006" title=" " alt="" coords="424,79,548,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="334,28,444,71,442,76,332,33"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="572,79,635,104"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="351,27,559,76,558,81,350,32"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="356,28,559,76,558,81,355,33"/>
 </map>
