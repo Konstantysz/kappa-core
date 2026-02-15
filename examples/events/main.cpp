@@ -1,7 +1,7 @@
-#include "Application.h"
-#include "EventBus.h"
-#include "Layer.h"
-#include "Logger.h"
+#include "Kappa/Application.h"
+#include "Kappa/EventBus.h"
+#include "Kappa/Layer.h"
+#include "Kappa/Logger.h"
 
 #include <GLFW/glfw3.h>
 #include <string>

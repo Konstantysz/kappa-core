@@ -1,5 +1,5 @@
-#include "Logger.h"
-#include "Window.h"
+#include "Kappa/Logger.h"
+#include "Kappa/Window.h"
 
 #include <gtest/gtest.h>
 

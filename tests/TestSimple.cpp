@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include <string>
 
 // Minimal test to isolate the problem - NO kappa headers at all
