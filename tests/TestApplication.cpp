@@ -1,8 +1,9 @@
-#include "Application.h"
-#include "Layer.h"
+#include "Kappa/Application.h"
+#include "Kappa/Layer.h"
 
 #include <GLFW/glfw3.h>
 #include <gtest/gtest.h>
+
 #include <memory>
 
 using namespace Kappa;

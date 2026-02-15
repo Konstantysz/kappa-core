@@ -1,9 +1,10 @@
-#include "Window.h"
-#include "WindowStatePersistence.h"
+#include "Kappa/Window.h"
+#include "Kappa/WindowStatePersistence.h"
+
+#include <gtest/gtest.h>
 
 #include <filesystem>
 #include <fstream>
-#include <gtest/gtest.h>
 
 using namespace Kappa;
 

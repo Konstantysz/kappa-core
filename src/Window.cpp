@@ -1,6 +1,6 @@
-#include "Window.h"
+#include "Kappa/Window.h"
 
-#include "Logger.h"
+#include "Kappa/Logger.h"
 
 namespace Kappa
 {

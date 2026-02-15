@@ -1,7 +1,8 @@
-#include "Event.h"
-#include "EventBus.h"
+#include "Kappa/Event.h"
+#include "Kappa/EventBus.h"
 
 #include <gtest/gtest.h>
+
 #include <string>
 
 using namespace Kappa;

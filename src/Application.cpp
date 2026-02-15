@@ -1,11 +1,11 @@
-#include "Application.h"
+#include "Kappa/Application.h"
 
 #include <cassert>
 
 #include <GLFW/glfw3.h>
 #include <glm/gtc/constants.hpp>
 
-#include "Logger.h"
+#include "Kappa/Logger.h"
 
 namespace Kappa
 {

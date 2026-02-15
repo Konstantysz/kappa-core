@@ -1,5 +1,5 @@
-#include "Event.h"
-#include "Layer.h"
+#include "Kappa/Event.h"
+#include "Kappa/Layer.h"
 
 #include <gtest/gtest.h>
 
