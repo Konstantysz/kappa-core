@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-02-15
+
+- Change headers parent folder to Kappa
+
+## [0.5.3] - 2025-11-26
+
+### Fixed
+
+- Fix documentation build directory
+
+## [0.5.2] - 2025-11-26
+
+### Added
+
+- Enable set logger name
+
 ## [0.5.1] - 2025-11-22
 
 ### Fixed
@@ -127,6 +143,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CMake build system
 - Example application demonstrating framework usage
 
+[0.6.0]: https://github.com/Konstantysz/kappa-core/compare/v0.5.3...v0.6.0
+[0.5.3]: https://github.com/Konstantysz/kappa-core/compare/v0.5.2...v0.5.3
+[0.5.2]: https://github.com/Konstantysz/kappa-core/compare/v0.5.1...v0.5.2
+[0.5.1]: https://github.com/Konstantysz/kappa-core/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/Konstantysz/kappa-core/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Konstantysz/kappa-core/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/Konstantysz/kappa-core/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Konstantysz/kappa-core/compare/v0.2.2...v0.3.0
