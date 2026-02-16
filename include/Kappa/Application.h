@@ -25,12 +25,14 @@ namespace Kappa
      */
     class Application
     {
-    public:
+    protected:
         /**
          * @brief Constructs an application.
          * @param specification Application configuration
          */
         explicit Application(const ApplicationSpecification &specification = ApplicationSpecification());
+
+    public:
 
         /**
          * @brief Virtual destructor for proper cleanup of derived classes.

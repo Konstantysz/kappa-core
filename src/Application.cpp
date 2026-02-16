@@ -1,6 +1,7 @@
 #include "Kappa/Application.h"
 
 #include <cassert>
+#include <stdexcept>
 
 #include <GLFW/glfw3.h>
 #include <glm/gtc/constants.hpp>
@@ -18,6 +19,11 @@ namespace Kappa
 
     Application::Application(const ApplicationSpecification &spec) : specification(spec)
     {
+        if (instance)
+        {
+            throw std::logic_error("Application already exists!");
+        }
+
         instance = this;
 
         glfwSetErrorCallback(GLFWErrorCallback);
