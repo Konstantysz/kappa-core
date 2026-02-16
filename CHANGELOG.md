@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Application singleton now uses protected constructor and logic_error check
 
+### Fixed
+
+- Fix window ownership and event bus safety
+
 ## [0.6.0] - 2026-02-15
 
 - Change headers parent folder to Kappa
