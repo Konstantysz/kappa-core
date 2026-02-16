@@ -106,9 +106,6 @@ $(document).ready(function(){initNavTree('classKappa_1_1Application.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9754c006ccf23d4cea035527432291d3" id="r_a9754c006ccf23d4cea035527432291d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKappa_1_1Application.html#a9754c006ccf23d4cea035527432291d3">Application</a> (const <a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a> &amp;specification=<a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a>())</td></tr>
-<tr class="memdesc:a9754c006ccf23d4cea035527432291d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an application.  <br /></td></tr>
-<tr class="separator:a9754c006ccf23d4cea035527432291d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e093f19ed014085c625cc7e215461bd" id="r_a5e093f19ed014085c625cc7e215461bd"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKappa_1_1Application.html#a5e093f19ed014085c625cc7e215461bd">~Application</a> ()</td></tr>
 <tr class="memdesc:a5e093f19ed014085c625cc7e215461bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
 <tr class="separator:a5e093f19ed014085c625cc7e215461bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +133,9 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a9754c006ccf23d4cea035527432291d3" id="r_a9754c006ccf23d4cea035527432291d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKappa_1_1Application.html#a9754c006ccf23d4cea035527432291d3">Application</a> (const <a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a> &amp;specification=<a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a>())</td></tr>
+<tr class="memdesc:a9754c006ccf23d4cea035527432291d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an application.  <br /></td></tr>
+<tr class="separator:a9754c006ccf23d4cea035527432291d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa708ad268235fe6e2069adbb2c77531b" id="r_aa708ad268235fe6e2069adbb2c77531b"><td class="memTemplParams" colspan="2">template&lt;typename TLayer &gt; <br />
 requires std::is_base_of_v&lt;<a class="el" href="classKappa_1_1Layer.html">Layer</a>, TLayer&gt;</td></tr>
 <tr class="memitem:aa708ad268235fe6e2069adbb2c77531b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classKappa_1_1Application.html#aa708ad268235fe6e2069adbb2c77531b">PushLayer</a> ()</td></tr>
@@ -166,40 +166,6 @@ requires std::is_base_of_v&lt;<a class="el" href="classKappa_1_1Layer.html">Laye
 <div class="textblock"><p>Base class for applications with layer-based architecture. </p>
 <dl class="section note"><dt>Note</dt><dd>Only ONE instance should exist at a time (Service Locator pattern). </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9754c006ccf23d4cea035527432291d3" name="a9754c006ccf23d4cea035527432291d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9754c006ccf23d4cea035527432291d3">&#9670;&#160;</a></span>Application()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Kappa::Application::Application </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a> &amp;&#160;</td>
-          <td class="paramname"><em>specification</em> = <code><a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a>()</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructs an application. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">specification</td><td><a class="el" href="classKappa_1_1Application.html" title="Base class for applications with layer-based architecture.">Application</a> configuration </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a5e093f19ed014085c625cc7e215461bd" name="a5e093f19ed014085c625cc7e215461bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e093f19ed014085c625cc7e215461bd">&#9670;&#160;</a></span>~Application()</h2>
 
@@ -224,6 +190,40 @@ requires std::is_base_of_v&lt;<a class="el" href="classKappa_1_1Layer.html">Laye
 </div><div class="memdoc">
 
 <p>Virtual destructor for proper cleanup of derived classes. </p>
+
+</div>
+</div>
+<a id="a9754c006ccf23d4cea035527432291d3" name="a9754c006ccf23d4cea035527432291d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9754c006ccf23d4cea035527432291d3">&#9670;&#160;</a></span>Application()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Kappa::Application::Application </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a> &amp;&#160;</td>
+          <td class="paramname"><em>specification</em> = <code><a class="el" href="structKappa_1_1ApplicationSpecification.html">ApplicationSpecification</a>()</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs an application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">specification</td><td><a class="el" href="classKappa_1_1Application.html" title="Base class for applications with layer-based architecture.">Application</a> configuration </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

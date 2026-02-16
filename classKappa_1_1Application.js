@@ -1,7 +1,7 @@
 var classKappa_1_1Application =
 [
-    [ "Application", "classKappa_1_1Application.html#a9754c006ccf23d4cea035527432291d3", null ],
     [ "~Application", "classKappa_1_1Application.html#a5e093f19ed014085c625cc7e215461bd", null ],
+    [ "Application", "classKappa_1_1Application.html#a9754c006ccf23d4cea035527432291d3", null ],
     [ "BeginFrame", "classKappa_1_1Application.html#a198f4a6a1a2c9c0d9ea3cc9655056d86", null ],
     [ "EndFrame", "classKappa_1_1Application.html#a57773d167d2c9e84f4a831514e821271", null ],
     [ "Get", "classKappa_1_1Application.html#acba916c917cf497d9ad63d46786bb13f", null ],
