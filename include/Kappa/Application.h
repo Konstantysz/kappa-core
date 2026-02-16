@@ -27,12 +27,6 @@ namespace Kappa
     {
     public:
         /**
-         * @brief Constructs an application.
-         * @param specification Application configuration
-         */
-        explicit Application(const ApplicationSpecification &specification = ApplicationSpecification());
-
-        /**
          * @brief Virtual destructor for proper cleanup of derived classes.
          */
         virtual ~Application();
@@ -48,6 +42,12 @@ namespace Kappa
         void Stop();
 
     protected:
+        /**
+         * @brief Constructs an application.
+         * @param specification Application configuration
+         */
+        explicit Application(const ApplicationSpecification &specification = ApplicationSpecification());
+
         /**
          * @brief Adds a layer to the layer stack (default constructible version).
          * @tparam TLayer Layer type (must derive from Layer)
