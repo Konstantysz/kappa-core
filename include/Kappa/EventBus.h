@@ -4,6 +4,7 @@
 
 #include <functional>
 #include <memory>
+#include <mutex>
 #include <typeindex>
 #include <unordered_map>
 #include <vector>
@@ -25,8 +26,14 @@ namespace Kappa
             requires std::is_base_of_v<Event, TEvent>
         void Subscribe(std::function<void(const TEvent &)> callback)
         {
+            std::lock_guard<std::mutex> lock(subscribersMutex);
             const auto typeIndex = std::type_index(typeid(TEvent));
-            auto wrapper = [callback](const Event &event) { callback(static_cast<const TEvent &>(event)); };
+            auto wrapper = [callback](const Event &event) {
+                if (const auto *specEvent = dynamic_cast<const TEvent *>(&event))
+                {
+                    callback(*specEvent);
+                }
+            };
             subscribers[typeIndex].push_back(wrapper);
         }
 
@@ -39,13 +46,19 @@ namespace Kappa
             requires std::is_base_of_v<Event, TEvent>
         void Publish(const TEvent &event)
         {
-            const auto typeIndex = std::type_index(typeid(TEvent));
-            if (const auto it = subscribers.find(typeIndex); it != subscribers.end())
+            std::vector<EventCallback> handlers;
             {
-                for (const auto &callback : it->second)
+                std::lock_guard<std::mutex> lock(subscribersMutex);
+                const auto typeIndex = std::type_index(typeid(TEvent));
+                if (const auto it = subscribers.find(typeIndex); it != subscribers.end())
                 {
-                    callback(event);
+                    handlers = it->second;
                 }
+            }
+
+            for (const auto &callback : handlers)
+            {
+                callback(event);
             }
         }
 
@@ -54,11 +67,13 @@ namespace Kappa
          */
         void Clear()
         {
+            std::lock_guard<std::mutex> lock(subscribersMutex);
             subscribers.clear();
         }
 
     private:
         using EventCallback = std::function<void(const Event &)>;
         std::unordered_map<std::type_index, std::vector<EventCallback>> subscribers;
+        mutable std::mutex subscribersMutex;
     };
 } // namespace Kappa

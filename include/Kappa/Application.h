@@ -134,7 +134,7 @@ namespace Kappa
     private:
         ApplicationSpecification specification;         ///< Application configuration
         std::vector<std::unique_ptr<Layer>> layerStack; ///< Stack of application layers
-        std::shared_ptr<Window> window;                 ///< Main application window
+        std::unique_ptr<Window> window;                 ///< Main application window
         bool isRunning = false;                         ///< Flag indicating if the application is running
         EventBus eventBus;                              ///< Event bus for inter-layer communication
     };
