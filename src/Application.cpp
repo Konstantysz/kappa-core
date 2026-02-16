@@ -34,7 +34,7 @@ namespace Kappa
             specification.windowSpecification.title = specification.name;
         }
 
-        window = std::make_shared<Window>(specification.windowSpecification);
+        window = std::make_unique<Window>(specification.windowSpecification);
         window->Create();
     }
 
