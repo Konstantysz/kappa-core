@@ -104,61 +104,76 @@ $(document).ready(function(){initNavTree('EventBus_8h_source.html',''); initResi
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;typeindex&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceKappa.html">Kappa</a></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html">   16</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classKappa_1_1EventBus.html">EventBus</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TEvent&gt;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keyword">requires</span> std::is_base_of_v&lt;Event, TEvent&gt;</div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">   26</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">Subscribe</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> TEvent &amp;)&gt; callback)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keyword">const</span> <span class="keyword">auto</span> typeIndex = std::type_index(<span class="keyword">typeid</span>(TEvent));</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keyword">auto</span> wrapper = [callback](<span class="keyword">const</span> <a class="code hl_class" href="classKappa_1_1Event.html">Event</a> &amp;event) { callback(<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>TEvent &amp;<span class="keyword">&gt;</span>(event)); };</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            subscribers[typeIndex].push_back(wrapper);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;typeindex&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceKappa.html">Kappa</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html">   17</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classKappa_1_1EventBus.html">EventBus</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TEvent&gt;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">requires</span> std::is_base_of_v&lt;Event, TEvent&gt;</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">   27</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">Subscribe</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> TEvent &amp;)&gt; callback)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            std::lock_guard&lt;std::mutex&gt; lock(subscribersMutex);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keyword">const</span> <span class="keyword">auto</span> typeIndex = std::type_index(<span class="keyword">typeid</span>(TEvent));</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keyword">auto</span> wrapper = [callback](<span class="keyword">const</span> <a class="code hl_class" href="classKappa_1_1Event.html">Event</a> &amp;event) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *specEvent = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>TEvent *<span class="keyword">&gt;</span>(&amp;event))</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    callback(*specEvent);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            };</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            subscribers[typeIndex].push_back(wrapper);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TEvent&gt;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keyword">requires</span> std::is_base_of_v&lt;Event, TEvent&gt;</div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">   40</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">Publish</a>(<span class="keyword">const</span> TEvent &amp;event)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">const</span> <span class="keyword">auto</span> typeIndex = std::type_index(<span class="keyword">typeid</span>(TEvent));</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> it = subscribers.find(typeIndex); it != subscribers.end())</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;callback : it-&gt;second)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    callback(event);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> TEvent&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">requires</span> std::is_base_of_v&lt;Event, TEvent&gt;</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">   47</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">Publish</a>(<span class="keyword">const</span> TEvent &amp;event)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            std::vector&lt;EventCallback&gt; handlers;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                std::lock_guard&lt;std::mutex&gt; lock(subscribersMutex);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keyword">const</span> <span class="keyword">auto</span> typeIndex = std::type_index(<span class="keyword">typeid</span>(TEvent));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> it = subscribers.find(typeIndex); it != subscribers.end())</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    handlers = it-&gt;second;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;callback : handlers)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                callback(event);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">   55</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">Clear</a>()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            subscribers.clear();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">   68</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">Clear</a>()</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            std::lock_guard&lt;std::mutex&gt; lock(subscribersMutex);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            subscribers.clear();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">using </span>EventCallback = std::function&lt;void(<span class="keyword">const</span> <a class="code hl_class" href="classKappa_1_1Event.html">Event</a> &amp;)&gt;;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::unordered_map&lt;std::type_index, std::vector&lt;EventCallback&gt;&gt; subscribers;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">using </span>EventCallback = std::function&lt;void(<span class="keyword">const</span> <a class="code hl_class" href="classKappa_1_1Event.html">Event</a> &amp;)&gt;;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        std::unordered_map&lt;std::type_index, std::vector&lt;EventCallback&gt;&gt; subscribers;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">mutable</span> std::mutex subscribersMutex;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    };</div>
 </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>} <span class="comment">// namespace Kappa</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace Kappa</span></div>
 <div class="ttc" id="aEvent_8h_html"><div class="ttname"><a href="Event_8h.html">Event.h</a></div></div>
-<div class="ttc" id="aclassKappa_1_1EventBus_html"><div class="ttname"><a href="classKappa_1_1EventBus.html">Kappa::EventBus</a></div><div class="ttdoc">Event bus for publish-subscribe communication between layers.</div><div class="ttdef"><b>Definition</b> EventBus.h:17</div></div>
-<div class="ttc" id="aclassKappa_1_1EventBus_html_a0c0bda7159a228d5c8c771a476404b0a"><div class="ttname"><a href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">Kappa::EventBus::Subscribe</a></div><div class="ttdeci">void Subscribe(std::function&lt; void(const TEvent &amp;)&gt; callback)</div><div class="ttdoc">Subscribes to events of a specific type.</div><div class="ttdef"><b>Definition</b> EventBus.h:26</div></div>
-<div class="ttc" id="aclassKappa_1_1EventBus_html_a3ead8832c5450d93763d3354a1260306"><div class="ttname"><a href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">Kappa::EventBus::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdoc">Clears all subscribers.</div><div class="ttdef"><b>Definition</b> EventBus.h:55</div></div>
-<div class="ttc" id="aclassKappa_1_1EventBus_html_a7277ee843041051e4f0c266ab90bc8c8"><div class="ttname"><a href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">Kappa::EventBus::Publish</a></div><div class="ttdeci">void Publish(const TEvent &amp;event)</div><div class="ttdoc">Publishes an event to all subscribers.</div><div class="ttdef"><b>Definition</b> EventBus.h:40</div></div>
+<div class="ttc" id="aclassKappa_1_1EventBus_html"><div class="ttname"><a href="classKappa_1_1EventBus.html">Kappa::EventBus</a></div><div class="ttdoc">Event bus for publish-subscribe communication between layers.</div><div class="ttdef"><b>Definition</b> EventBus.h:18</div></div>
+<div class="ttc" id="aclassKappa_1_1EventBus_html_a0c0bda7159a228d5c8c771a476404b0a"><div class="ttname"><a href="classKappa_1_1EventBus.html#a0c0bda7159a228d5c8c771a476404b0a">Kappa::EventBus::Subscribe</a></div><div class="ttdeci">void Subscribe(std::function&lt; void(const TEvent &amp;)&gt; callback)</div><div class="ttdoc">Subscribes to events of a specific type.</div><div class="ttdef"><b>Definition</b> EventBus.h:27</div></div>
+<div class="ttc" id="aclassKappa_1_1EventBus_html_a3ead8832c5450d93763d3354a1260306"><div class="ttname"><a href="classKappa_1_1EventBus.html#a3ead8832c5450d93763d3354a1260306">Kappa::EventBus::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdoc">Clears all subscribers.</div><div class="ttdef"><b>Definition</b> EventBus.h:68</div></div>
+<div class="ttc" id="aclassKappa_1_1EventBus_html_a7277ee843041051e4f0c266ab90bc8c8"><div class="ttname"><a href="classKappa_1_1EventBus.html#a7277ee843041051e4f0c266ab90bc8c8">Kappa::EventBus::Publish</a></div><div class="ttdeci">void Publish(const TEvent &amp;event)</div><div class="ttdoc">Publishes an event to all subscribers.</div><div class="ttdef"><b>Definition</b> EventBus.h:47</div></div>
 <div class="ttc" id="aclassKappa_1_1Event_html"><div class="ttname"><a href="classKappa_1_1Event.html">Kappa::Event</a></div><div class="ttdoc">Base class for all events in the application.</div><div class="ttdef"><b>Definition</b> Event.h:9</div></div>
 <div class="ttc" id="anamespaceKappa_html"><div class="ttname"><a href="namespaceKappa.html">Kappa</a></div><div class="ttdef"><b>Definition</b> Application.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
