@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.26)
 # Gradually re-enable tests to find the culprit
 add_executable(TestKappaCore
     TestSimple.cpp
+    TestLogger.cpp
     TestEventBus.cpp  # ✅ Passed (15 tests)
     TestLayer.cpp     # ✅ Passed (15 tests)
     TestWindow.cpp    # Testing Window structures

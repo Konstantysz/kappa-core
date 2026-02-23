@@ -59,6 +59,7 @@ find_package(spdlog CONFIG REQUIRED)
 
 add_library(Kappa STATIC
     src/Application.cpp
+    src/Logger.cpp
     src/Window.cpp
     src/WindowStatePersistence.cpp
     src/Texture.cpp)
