@@ -16,5 +16,6 @@ var searchData=
   ['log_5fwarn_13',['LOG_WARN',['../Logger_8h.html#add82efa459e0af380b68522c29b9fd44',1,'Logger.h']]],
   ['logger_14',['Logger',['../classKappa_1_1Logger.html',1,'Kappa']]],
   ['logger_2eh_15',['Logger.h',['../Logger_8h.html',1,'']]],
-  ['logging_16',['Logging',['../index.html#autotoc_md11',1,'']]]
+  ['logging_16',['Logging',['../index.html#autotoc_md11',1,'']]],
+  ['loglevel_17',['LogLevel',['../namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39',1,'Kappa']]]
 ];

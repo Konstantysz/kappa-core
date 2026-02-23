@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['warn_0',['Warn',['../classKappa_1_1Logger.html#a0e7cf3da56b5e854d017227a23aed712',1,'Kappa::Logger']]],
+  ['warn_0',['warn',['../classKappa_1_1Logger.html#a648fe499ab3aa59a7ab66573bb3c5d45',1,'Kappa::Logger::Warn()'],['../namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a56525ae64d370c0b448ac0d60710ef17',1,'Kappa::Warn']]],
   ['width_1',['width',['../structKappa_1_1Size.html#a6fbf7afa7ae5839e7657e3312f53cc52',1,'Kappa::Size::width'],['../structKappa_1_1WindowState.html#ade7dadb6eb757552a8951fa77b908ca0',1,'Kappa::WindowState::width'],['../structKappa_1_1WindowSpecification.html#adc9e5cda79a074de88ea064dd78c8f1c',1,'Kappa::WindowSpecification::width']]],
   ['window_2',['window',['../classKappa_1_1Window.html',1,'Kappa::Window'],['../classKappa_1_1Window.html#a9a96a4e89e897a2ef49f7643d3b586ba',1,'Kappa::Window::Window()']]],
   ['window_2eh_3',['Window.h',['../Window_8h.html',1,'']]],

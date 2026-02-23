@@ -8,5 +8,5 @@ var searchData=
   ['texture_20loading_5',['Texture Loading',['../index.html#autotoc_md13',1,'']]],
   ['texture_2eh_6',['Texture.h',['../Texture_8h.html',1,'']]],
   ['title_7',['title',['../structKappa_1_1WindowSpecification.html#a15015a9ca14f6a8a053fcd22b816eb6a',1,'Kappa::WindowSpecification']]],
-  ['trace_8',['Trace',['../classKappa_1_1Logger.html#ac70cbe9507b6d3dc570675c657702121',1,'Kappa::Logger']]]
+  ['trace_8',['trace',['../classKappa_1_1Logger.html#a4390f5984590266e4082d9e2dc2b7600',1,'Kappa::Logger::Trace()'],['../namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39add4ec0ac4e58f7c32a01244ae91150b1',1,'Kappa::Trace']]]
 ];

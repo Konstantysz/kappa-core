@@ -1,15 +1,13 @@
 var classKappa_1_1Logger =
 [
-    [ "Critical", "classKappa_1_1Logger.html#a9c26c9c8b038a569d6e8abdb88b41df4", null ],
-    [ "Debug", "classKappa_1_1Logger.html#abc4ab41f219d72164b09e29051398966", null ],
-    [ "Error", "classKappa_1_1Logger.html#aba319e65b6747fa2a20c0c8fccd30660", null ],
+    [ "Critical", "classKappa_1_1Logger.html#a586cf55f8652b96dacd65f7f399100ea", null ],
+    [ "Debug", "classKappa_1_1Logger.html#a9984cad78be87c174c9c85d159500d35", null ],
+    [ "Error", "classKappa_1_1Logger.html#aa17a2a77c17cc1bbd9e3688eb0d0787f", null ],
     [ "Flush", "classKappa_1_1Logger.html#aad5303b15a82698e14a0fd4db0bb297e", null ],
     [ "Get", "classKappa_1_1Logger.html#a7fcfd105b5f21582bdf40d7d5cafe92b", null ],
-    [ "GetSpdlog", "classKappa_1_1Logger.html#a787083859eb55158a882115137fbdbd1", null ],
-    [ "GetSpdlog", "classKappa_1_1Logger.html#a4b4f1478833c32450b28e226c920d7d3", null ],
-    [ "Info", "classKappa_1_1Logger.html#a8707a788dd2ec52b6d1c28bb93489cdb", null ],
-    [ "SetLevel", "classKappa_1_1Logger.html#a8c772a5bd9d2d12363526e935caf1c34", null ],
+    [ "Info", "classKappa_1_1Logger.html#a8bce0a2c466c1713bc58425f405b4b09", null ],
+    [ "SetLevel", "classKappa_1_1Logger.html#a06d395e9a65e003c7c879fa14f8a392d", null ],
     [ "SetLoggerName", "classKappa_1_1Logger.html#a18b22aeade5ebfdc53dfd3c18424b67a", null ],
-    [ "Trace", "classKappa_1_1Logger.html#ac70cbe9507b6d3dc570675c657702121", null ],
-    [ "Warn", "classKappa_1_1Logger.html#a0e7cf3da56b5e854d017227a23aed712", null ]
+    [ "Trace", "classKappa_1_1Logger.html#a4390f5984590266e4082d9e2dc2b7600", null ],
+    [ "Warn", "classKappa_1_1Logger.html#a648fe499ab3aa59a7ab66573bb3c5d45", null ]
 ];

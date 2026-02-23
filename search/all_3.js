@@ -10,5 +10,5 @@ var searchData=
   ['core_20components_7',['Core Components',['../index.html#autotoc_md3',1,'']]],
   ['coverage_8',['Test Coverage',['../index.html#autotoc_md21',1,'']]],
   ['create_9',['create',['../classKappa_1_1Texture.html#ae0415511d3855548e6c0a96a05df45ba',1,'Kappa::Texture::Create()'],['../classKappa_1_1Window.html#a41a3a61ad7bfb0267333bbb81741f8e3',1,'Kappa::Window::Create()']]],
-  ['critical_10',['Critical',['../classKappa_1_1Logger.html#a9c26c9c8b038a569d6e8abdb88b41df4',1,'Kappa::Logger']]]
+  ['critical_10',['critical',['../classKappa_1_1Logger.html#a586cf55f8652b96dacd65f7f399100ea',1,'Kappa::Logger::Critical()'],['../namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a278d01e5af56273bae1bb99a98b370cd',1,'Kappa::Critical']]]
 ];

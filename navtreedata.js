@@ -61,7 +61,11 @@ var NAVTREE =
       [ "v1.0.0 (Initial Release)", "index.html#autotoc_md29", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -85,7 +89,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Application_8h.html",
-"structKappa_1_1Version.html#a2ae1f11f9d3d78685d6d2d2a527ae374"
+"structKappa_1_1Position.html#a6f998343bdde7a882553f9490e617184"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

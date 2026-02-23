@@ -1,7 +1,7 @@
 var searchData=
 [
   ['save_0',['Save',['../classKappa_1_1WindowStatePersistence.html#aa1390ecb870ef5e308133de2454759e8',1,'Kappa::WindowStatePersistence']]],
-  ['setlevel_1',['SetLevel',['../classKappa_1_1Logger.html#a8c772a5bd9d2d12363526e935caf1c34',1,'Kappa::Logger']]],
+  ['setlevel_1',['SetLevel',['../classKappa_1_1Logger.html#a06d395e9a65e003c7c879fa14f8a392d',1,'Kappa::Logger']]],
   ['setloggername_2',['SetLoggerName',['../classKappa_1_1Logger.html#a18b22aeade5ebfdc53dfd3c18424b67a',1,'Kappa::Logger']]],
   ['setposition_3',['SetPosition',['../classKappa_1_1Window.html#a0d93b4c57f75d5fb1ff00acabb04e4a5',1,'Kappa::Window']]],
   ['setsize_4',['SetSize',['../classKappa_1_1Window.html#ae9f06c3209856a7b7363609a32f5d29b',1,'Kappa::Window']]],

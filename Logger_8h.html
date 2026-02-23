@@ -93,20 +93,20 @@ $(document).ready(function(){initNavTree('Logger_8h.html',''); initResizable(); 
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">Logger.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;format&gt;</code><br />
+<div class="textblock"><code>#include &lt;format&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;source_location&gt;</code><br />
-<code>#include &lt;spdlog/sinks/stdout_color_sinks.h&gt;</code><br />
-<code>#include &lt;spdlog/spdlog.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Logger.h:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="Logger_8h__incl.svg" width="100%" height="393"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Logger_8h__incl.svg" width="534" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="Logger_8h_source.html">Go to the source code of this file.</a></p>
@@ -142,6 +142,22 @@ Macros</h2></td></tr>
 <tr class="memitem:a4091a2d7d849a8b5eded40d8723b8768" id="r_a4091a2d7d849a8b5eded40d8723b8768"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Logger_8h.html#a4091a2d7d849a8b5eded40d8723b8768">LOG_CRITICAL</a>(...)&#160;&#160;&#160;<a class="el" href="classKappa_1_1Logger.html#a7fcfd105b5f21582bdf40d7d5cafe92b">::Kappa::Logger::Get</a>().Critical(std::source_location::current(), __VA_ARGS__)</td></tr>
 <tr class="memdesc:a4091a2d7d849a8b5eded40d8723b8768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Critical logging macro.  <br /></td></tr>
 <tr class="separator:a4091a2d7d849a8b5eded40d8723b8768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a3cdc97dd280d1971a33378fc5b094e39" id="r_a3cdc97dd280d1971a33378fc5b094e39"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39">Kappa::LogLevel</a> { <br />
+&#160;&#160;<a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39add4ec0ac4e58f7c32a01244ae91150b1">Kappa::Trace</a> = 0
+, <a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39aa603905470e2a5b8c13e96b579ef0dba">Kappa::Debug</a> = 1
+, <a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a4059b0251f66a18cb56f544728796875">Kappa::Info</a> = 2
+, <a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a56525ae64d370c0b448ac0d60710ef17">Kappa::Warn</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a902b0d55fddef6f8d651fe1035b7d4bd">Kappa::Error</a> = 4
+, <a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39a278d01e5af56273bae1bb99a98b370cd">Kappa::Critical</a> = 5
+, <a class="el" href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39ad15305d7a4e34e02489c74a5ef542f36">Kappa::Off</a> = 6
+<br />
+ }</td></tr>
+<tr class="memdesc:a3cdc97dd280d1971a33378fc5b094e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging levels.  <a href="namespaceKappa.html#a3cdc97dd280d1971a33378fc5b094e39">More...</a><br /></td></tr>
+<tr class="separator:a3cdc97dd280d1971a33378fc5b094e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a4091a2d7d849a8b5eded40d8723b8768" name="a4091a2d7d849a8b5eded40d8723b8768"></a>
