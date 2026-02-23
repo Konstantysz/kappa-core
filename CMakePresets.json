@@ -49,30 +49,11 @@
             }
         },
         {
-            "name": "ninja-debug-asan",
-            "displayName": "Ninja Debug (ASan/UBSan)",
-            "inherits": "single-config-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "SH3DS_ENABLE_SANITIZERS": "ON"
-            }
-        },
-        {
             "name": "ninja-release",
             "displayName": "Ninja Release",
             "inherits": "single-config-base",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "rpi-cross",
-            "displayName": "Raspberry Pi Cross-Compile",
-            "inherits": "single-config-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/CrossCompile-RPi.cmake",
-                "VCPKG_TARGET_TRIPLET": "arm64-linux"
             }
         },
         {
@@ -87,16 +68,8 @@
             "configurePreset": "ninja-debug"
         },
         {
-            "name": "ninja-debug-asan",
-            "configurePreset": "ninja-debug-asan"
-        },
-        {
             "name": "ninja-release",
             "configurePreset": "ninja-release"
-        },
-        {
-            "name": "rpi-cross",
-            "configurePreset": "rpi-cross"
         },
         {
             "name": "visual-studio-debug",
@@ -113,13 +86,6 @@
         {
             "name": "ninja-debug",
             "configurePreset": "ninja-debug",
-            "output": {
-                "outputOnFailure": true
-            }
-        },
-        {
-            "name": "ninja-debug-asan",
-            "configurePreset": "ninja-debug-asan",
             "output": {
                 "outputOnFailure": true
             }

@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Kappa::Logger::SetLevel` to dynamically adjust logging verbosity
 - `Kappa::LogLevel` enum for type-safe log level management
 - Refactored `Kappa::Logger` using PIMPL pattern to hide `spdlog` implementation details from public API
+- CMake presets for easier configuration
 
 ### Changed
 
