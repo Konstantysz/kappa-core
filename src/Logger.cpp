@@ -46,7 +46,10 @@ namespace Kappa
         impl_->logger->flush();
     }
 
-    void Logger::LogInternal(LogLevel level, const std::source_location &loc, std::string_view format, std::format_args args)
+    void Logger::LogInternal(LogLevel level,
+        const std::source_location &loc,
+        std::string_view format,
+        std::format_args args)
     {
         auto message = std::vformat(format, args);
         impl_->logger->log(
