@@ -1,15 +1,27 @@
 #pragma once
 
-#include <chrono>
 #include <format>
 #include <memory>
 #include <source_location>
-
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/spdlog.h>
+#include <string>
+#include <string_view>
 
 namespace Kappa
 {
+    /**
+     * @brief Logging levels.
+     */
+    enum class LogLevel
+    {
+        Trace = 0,
+        Debug = 1,
+        Info = 2,
+        Warn = 3,
+        Error = 4,
+        Critical = 5,
+        Off = 6
+    };
+
     /**
      * @brief Type-safe logging wrapper around spdlog.
      */
@@ -20,31 +32,13 @@ namespace Kappa
          * @brief Returns the logger instance.
          * @return Logger instance
          */
-        static Logger &Get()
-        {
-            static Logger instance(spdlog::stdout_color_mt(GetLoggerName()));
-            return instance;
-        }
+        static Logger &Get();
 
         /**
          * @brief Sets the logger name (must be called before first Get()).
          * @param name Logger name to display in logs
          */
-        static void SetLoggerName(const std::string &name)
-        {
-            GetLoggerName() = name;
-        }
-
-    private:
-        /**
-         * @brief Returns the logger name (default: "Kappa").
-         * @return Logger name
-         */
-        static std::string &GetLoggerName()
-        {
-            static std::string loggerName = "Kappa";
-            return loggerName;
-        }
+        static void SetLoggerName(const std::string &name);
 
     public:
         /**
@@ -54,11 +48,9 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args>
-        void Trace(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args> void Trace(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->trace(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
+            LogInternal(LogLevel::Trace, loc, format, std::make_format_args(args...));
         }
 
         /**
@@ -68,11 +60,9 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args>
-        void Debug(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args> void Debug(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->debug(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
+            LogInternal(LogLevel::Debug, loc, format, std::make_format_args(args...));
         }
 
         /**
@@ -82,10 +72,9 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Info(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args> void Info(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->info(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
+            LogInternal(LogLevel::Info, loc, format, std::make_format_args(args...));
         }
 
         /**
@@ -95,10 +84,9 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args> void Warn(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args> void Warn(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->warn(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
+            LogInternal(LogLevel::Warn, loc, format, std::make_format_args(args...));
         }
 
         /**
@@ -108,11 +96,9 @@ namespace Kappa
          * @param format Format string
          * @param args Format arguments
          */
-        template<typename... Args>
-        void Error(const std::source_location &loc, const std::string &format, Args &&...args)
+        template<typename... Args> void Error(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->error(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
+            LogInternal(LogLevel::Error, loc, format, std::make_format_args(args...));
         }
 
         /**
@@ -123,74 +109,37 @@ namespace Kappa
          * @param args Format arguments
          */
         template<typename... Args>
-        void Critical(const std::source_location &loc, const std::string &format, Args &&...args)
+        void Critical(const std::source_location &loc, std::string_view format, Args &&...args)
         {
-            logger_->critical(
-                "[{}:{}] {}", GetFileName(loc), loc.line(), std::vformat(format, std::make_format_args(args...)));
-        }
-
-        /**
-         * @brief Returns the spdlog instance.
-         * @return spdlog logger
-         */
-        spdlog::logger &GetSpdlog()
-        {
-            return *logger_;
-        }
-        const spdlog::logger &GetSpdlog() const
-        {
-            return *logger_;
+            LogInternal(LogLevel::Critical, loc, format, std::make_format_args(args...));
         }
 
         /**
          * @brief Flushes the logger.
          */
-        void Flush()
-        {
-            logger_->flush();
-        }
+        void Flush();
 
         /**
          * @brief Sets the log level.
          * @param level Log level
          */
-        void SetLevel(spdlog::level::level_enum level)
-        {
-            logger_->set_level(level);
-        }
+        void SetLevel(LogLevel level);
 
     private:
-        /**
-         * @brief Constructs logger.
-         * @param spdlogger spdlog logger instance
-         */
-        explicit Logger(std::shared_ptr<spdlog::logger> spdlogger) : logger_(std::move(spdlogger))
-        {
-        }
+        Logger();
+        ~Logger();
 
-        /**
-         * @brief Extracts filename from full path.
-         * @param loc Source location
-         * @return Filename without path
-         */
-        static std::string_view GetFileName(const std::source_location &loc)
-        {
-            const char *path = loc.file_name();
-            const char *filename = path;
+        void LogInternal(LogLevel level,
+            const std::source_location &loc,
+            std::string_view format,
+            std::format_args args);
 
-            for (const char *p = path; *p; ++p)
-            {
-                if (*p == '/' || *p == '\\')
-                {
-                    filename = p + 1;
-                }
-            }
-            return filename;
-        }
+        static std::string &GetLoggerName();
+        static std::string_view GetFileName(const std::source_location &loc);
 
-        std::shared_ptr<spdlog::logger> logger_;
+        struct Impl;
+        std::unique_ptr<Impl> impl_;
     };
-
 } // namespace Kappa
 
 /**
